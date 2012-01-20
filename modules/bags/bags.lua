@@ -244,12 +244,12 @@ function B:Layout(isBank)
 
 	if not isBank then
 		bs = BAGS_BACKPACK
-		cols = (floor((E.db.core.panelWidth - 10)/370 * 10))
+		cols = (floor((E.db.core.panelWidth)/370 * 10))
 		f = bagFrame
 		bSize = 30
 	else
 		bs = BAGS_BANK
-		cols = (floor((E.db.core.panelWidth - 10)/370 * 10))
+		cols = (floor((E.db.core.panelWidth)/370 * 10))
 		f = bankFrame
 		bSize = 30
 	end
@@ -307,7 +307,7 @@ function B:Layout(isBank)
 		rows = rows + 1
 	end
 
-	f:Width((E.db.core.panelWidth - 10))
+	f:Width((E.db.core.panelWidth))
 	f:Height(rows * 31 + (rows - 1) * 4 + offset + 24)
 
 	f.HolderFrame:SetWidth(33.5 * cols)
@@ -468,9 +468,9 @@ function B:CreateBagFrame(type)
 	f:SetFrameStrata("DIALOG")
 
 	if type == 'Bags' then
-		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 0, 4)
+		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 5, E.db.core.panelHeight - 24)
 	else
-		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', 0, 4)
+		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -5, E.db.core.panelHeight - 24)
 	end
 
 	f.HolderFrame = CreateFrame("Frame", name.."HolderFrame", f)
@@ -1306,7 +1306,7 @@ hooksecurefunc("updateContainerFrameAnchors", function()
 		frame:SetScale(1);
 		if ( index == 1 ) then
 			-- First bag
-			frame:SetPoint("BOTTOMRIGHT", RightChatToggleButton, "TOPRIGHT", 2, 2);
+			frame:SetPoint("BOTTOMRIGHT", RightChatPanel, "TOPRIGHT", 2, 2);
 			bagsPerColumn = bagsPerColumn + 1
 		elseif ( freeScreenHeight < frame:GetHeight() ) then
 			-- Start a new column
