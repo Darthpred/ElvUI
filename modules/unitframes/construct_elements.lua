@@ -486,8 +486,8 @@ function UF:Construct_ResurectionIcon(frame)
 	f:SetFrameLevel(20)
 
 	local tex = f:CreateTexture(nil, "OVERLAY")
-	tex:Point('CENTER', frame.Health.value, 'CENTER')
-	tex:Size(30, 25)
+	tex:Point('LEFT', frame.Health.value, 'LEFT')
+	tex:Size(24, 20)
 	tex:SetDrawLayer('OVERLAY', 7)
 	
 	return tex
