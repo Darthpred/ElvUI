@@ -218,8 +218,8 @@ function UF:PostUpdatePower(unit, min, max)
 	if min == 0 then 
 		self.value:SetText() 
 	else
-		if (not UnitIsPlayer(unit) and not UnitPlayerControlled(unit) or not UnitIsConnected(unit)) and not (unit and unit:find("boss%d")) then
-			self.value:SetText()
+		if (not UnitIsPlayer(unit) and not UnitPlayerControlled(unit) and not UnitIsConnected(unit)) then
+			power.value:SetText()
 		elseif dead or ghost then
 			self.value:SetText()
 		else
