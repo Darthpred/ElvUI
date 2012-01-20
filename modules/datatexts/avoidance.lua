@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local DT = E:GetModule('DataTexts')
 
 --[[This file is a blank datatext example template, this file will not be loaded.]]
@@ -106,5 +106,5 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Avoidance', {"UNIT_TARGET", "UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE"}, OnEvent, nil, nil, OnEnter)
+DT:RegisterDatatext("Защита", {"UNIT_TARGET", "UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE"}, OnEvent, nil, nil, OnEnter)
 

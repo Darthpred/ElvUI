@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local DT = E:GetModule('DataTexts')
 
 local displayString = ""
@@ -77,5 +77,5 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Durability', {'PLAYER_ENTERING_WORLD', "UPDATE_INVENTORY_DURABILITY", "MERCHANT_SHOW"}, OnEvent, nil, Click, OnEnter)
+DT:RegisterDatatext("Прочность", {'PLAYER_ENTERING_WORLD', "UPDATE_INVENTORY_DURABILITY", "MERCHANT_SHOW"}, OnEvent, nil, Click, OnEnter)
 

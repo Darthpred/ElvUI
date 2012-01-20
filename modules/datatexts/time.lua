@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local DT = E:GetModule('DataTexts')
 
 local APM = { TIMEMANAGER_PM, TIMEMANAGER_AM }
@@ -206,4 +206,4 @@ end
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Time', nil, nil, Update, Click, OnEnter)
+DT:RegisterDatatext("Время", nil, nil, Update, Click, OnEnter)

@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local DT = E:GetModule('DataTexts')
 
 -- initial delay for update (let the ui load)
@@ -135,5 +135,5 @@ end
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('System', nil, nil, Update, Click, OnEnter)
+DT:RegisterDatatext("Система", nil, nil, Update, Click, OnEnter)
 
