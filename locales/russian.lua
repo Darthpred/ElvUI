@@ -75,7 +75,7 @@ do
 	L['Panel Width'] = "Ширина панели";
 	L['Panel Height'] = "Высота панели";
 	L['PANEL_DESC'] = "Регулирование размеров левой и правой панелей. Это окажет эффект на чат и сумки.";
-	L['URL Links'] = "Сслыки";
+	L['URL Links'] = "Ссылки";
 	L['Attempt to create URL links inside the chat.'] = "Пытаться создавать ссылки в чате.";
 	L['Short Channels'] = "Короткие каналы";
 	L['Shorten the channel names in chat.'] = "Сокращать названия каналов чата.";
@@ -103,8 +103,10 @@ do
 	L['INCOMPATIBLE_ADDON'] = "Аддон %s не совместим с модулем %s ElvUI. Пожалуйста, отключите не совместимый аддон или модуль.";
 
 	L['Panel Texture'] = "Текстура панелей";
-	L['Specify a filename located inside the Interface\\AddOns\\ElvUI\\media\\textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.'] = "Укажите имя файла в папке Interface\\AddOns\\ElvUI\\media\\textures , который вы хотите использовать в качестве фона панелей.\n\nПожалуйста, учтите:\n-Рекомендованый размер изображения 256x128\n-Вы должны полностью перезапустить игру после добавления нового файла в папку.\n-Тип файла должен быть tga.";
+	L['Specify a filename located inside the World of Warcraft directory. Textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.\n\nExample: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nOr for most users it would be easier to simply put a tga file into your WoW folder, then type the name of the file here.'] = "Укажите имя файла в папке World of Warcraft, который вы хотите использовать в качестве фона панелей.\n\nПожалуйста, учтите:\n-Рекомендованый размер изображения 256x128\n-Вы должны полностью перезапустить игру после добавления нового файла в папку.\n-Тип файла должен быть tga.\n\nПример: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nДля большинства пользователей будет легче просто положить tga файл в папку WoW, а затем написать имя файла здесь.";
 	L["Are you sure you want to disband the group?"] = "Вы уверены, что хотите распустить группу?";
+	
+	L["Your version of ElvUI is out of date. You can download the latest version from www.curse.com"] = "Ваша версия ElvUI устарела. Вы можете скачать последнюю версию на www.curse.com";
 end
 
 --Media	/ Медиа
@@ -137,7 +139,7 @@ do
 	L["Unlock various elements of the UI to be repositioned."] = "Разблокировать элементы интерфейса для их перемещения.";
 	
 	L["Value Color"] = "Цвет значений";
-	L["Color some texts use."] = "Текст, используемый некоторыми текстами";
+	L["Color some texts use."] = "Цвет некоторых текстов.";
 end
 
 --NamePlate Config / Конфигурация неймплейтов
@@ -187,6 +189,11 @@ do
 	L['Good Scale'] = "'Хороший' масштаб";
 	L['Bad Scale'] = "'Плохой' масштаб";
 	L["Auras"] = "Дебаффы";
+	L['Healer Icon'] = "Иконки лекарей";
+	L['Display a healer icon over known healers inside battlegrounds.'] = "Отображать иконку над известными лекарями на полях боя.";
+	L['Restoration'] = "Исцеление";
+	L['Holy'] = "Свет";
+	L['Discipline'] = "Послушание";
 end
 
 --ClassTimers / Таймеры класса
@@ -400,7 +407,7 @@ do
 		L['Growth direction of the buffs'] = "Направление добавления баффов";
 	L['Initial Anchor'] = "Начальная точка";
 		L['The initial anchor point of the buffs on the frame'] = "Точка начальной привязки баффов на фрейме.";
-	L['Castbar'] = "Полоса каста";
+	L['Castbar'] = "Полоса заклинаний";
 	L['Icon'] = "Иконка";
 	L['Latency'] = "Задержка";
 	L['Color'] = "Цвет";
@@ -483,8 +490,8 @@ do
 		L['An Y offset (in pixels) to be used when anchoring new frames.'] = "Отступ по оси Y (в пикселях) при добавлении новых фреймов";
 	L['Show Party'] = "Показывать в группе";
 		L['When true, the group header is shown when the player is in a party.'] = "Включить отображение фреймов, когда игрок находится в группе.";
-	L['Show Raid'] = "Показывать в группе";
-		L['When true, the group header is shown when the player is in a raid.'] = "Включить отображение фреймов, когда игрок находится в группе.";
+	L['Show Raid'] = "Показывать в рейде";
+		L['When true, the group header is shown when the player is in a raid.'] = "Включить отображение фреймов, когда игрок находится в рейде.";
 	L['Show Solo'] = "Показывать соло";
 		L['When true, the header is shown when the player is not in any group.'] = "Включить отображение фреймов, когда игрок не находится в какой-либо группе (не оказывает ээфект на рейдовые фреймы).";
 	L['Display Player'] = "Показывать себя";
@@ -520,6 +527,10 @@ do
 	L['Show a incomming heal prediction bar on the unitframe. Also display a slightly different colored bar for incoming overheals.'] = "Отображать объем входящего исцеления на фреймах. Также отображает немного по другому окрашеную полосу для избыточного исцеления.";
 	L['Assist Frames'] = "Фреймы помошников";
 	L['Tank Frames'] = "Фреймы танков";
+	
+	L['Party Pets'] = "Питомцы группы";
+	L['Ticks'] = "Тики";
+	L['Display tick marks on the castbar for channelled spells. This will adjust automatically for spells like Drain Soul and add additional ticks based on haste.'] = "Отображать метки тиков на полосе заклинаний для поддерживаемых заклинаний. Они будут автоматически масштабироваться для заклинаний вроде Похищения души и добавлять новые тики, основываясь на показателе скорости.";
 end
 
 --Datatext / Текст данных
@@ -713,6 +724,8 @@ do
 	L['Change the position of the experience/reputation bar.'] = "Изменяте положение полосок опыта и репутации.";
 	L['Top Screen'] = "Вверху экрана";
 	L["Below Minimap"] = "Под миникартой";
+	L['Map Transparency'] = "Прозрачность карты";
+	L['Controls what the transparency of the worldmap will be set to when you are moving.'] = "Устанавливает прозрачность карты мира при движении.";
 end
 
 --Bags / Сумки
