@@ -103,6 +103,8 @@ do
 	L['INCOMPATIBLE_ADDON'] = "Аддон %s не совместим с модулем %s ElvUI. Пожалуйста, отключите не совместимый аддон или модуль.";
 
 	L['Panel Texture'] = "Текстура панелей";
+	L['Panel Texture (Left)'] = "Текстура левой панели";
+	L['Panel Texture (Right)'] = "Текстура правой панели";
 	L['Specify a filename located inside the World of Warcraft directory. Textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.\n\nExample: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nOr for most users it would be easier to simply put a tga file into your WoW folder, then type the name of the file here.'] = "Укажите имя файла в папке World of Warcraft, который вы хотите использовать в качестве фона панелей.\n\nПожалуйста, учтите:\n-Рекомендованый размер изображения 256x128\n-Вы должны полностью перезапустить игру после добавления нового файла в папку.\n-Тип файла должен быть tga.\n\nПример: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nДля большинства пользователей будет легче просто положить tga файл в папку WoW, а затем написать имя файла здесь.";
 	L["Are you sure you want to disband the group?"] = "Вы уверены, что хотите распустить группу?";
 	
