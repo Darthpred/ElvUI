@@ -21,7 +21,7 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		if type == 'health' then
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("|cff%02x%02x%02x%d%%|r |cffD7BEA5-|r |cffAF5050%s|r", r * 255, g * 255, b * 255, floor(min / max * 100), E:ShortValue(min))
+					value = format("|cff%02x%02x%02x%.1f%%|r |cffD7BEA5-|r |cffAF5050%s|r", r * 255, g * 255, b * 255, format("%.1f", min / max * 100), E:ShortValue(min))
 				else
 					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(max))	
 				end
@@ -34,7 +34,7 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("|cff%02x%02x%02x%d%%|r", r * 255, g * 255, b * 255, floor(min / max * 100))
+				value = format("|cff%02x%02x%02x%.1f%%|r", r * 255, g * 255, b * 255, format("%.1f", min / max * 100))
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -71,7 +71,7 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		if type == 'health' then
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("|cffAF5050%s|r |cffD7BEA5-|r |cff%02x%02x%02x%d%%|r", E:ShortValue(min), r * 255, g * 255, b * 255, floor(min / max * 100))
+					value = format("|cffAF5050%s|r |cffD7BEA5-|r |cff%02x%02x%02x%.1f%%|r", E:ShortValue(min), r * 255, g * 255, b * 255, format("%.1f", min / max * 100))
 				else
 					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(max))
 				end
@@ -84,7 +84,7 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("|cff%02x%02x%02x%d%%|r", r * 255, g * 255, b * 255, floor(min / max * 100))
+				value = format("|cff%02x%02x%02x%.1f%%|r", r * 255, g * 255, b * 255, format("%.1f", min / max * 100))
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -218,8 +218,8 @@ function UF:PostUpdatePower(unit, min, max)
 	if min == 0 then 
 		self.value:SetText() 
 	else
-		if (not UnitIsPlayer(unit) and not UnitPlayerControlled(unit) or not UnitIsConnected(unit)) and not (unit and unit:find("boss%d")) then
-			self.value:SetText()
+		if (not UnitIsPlayer(unit) and not UnitPlayerControlled(unit) and not UnitIsConnected(unit)) then
+			power.value:SetText()
 		elseif dead or ghost then
 			self.value:SetText()
 		else
@@ -700,32 +700,27 @@ function UF:UpdatePvPText(frame)
 	local PvPText = frame.PvPText
 	local LowManaText = frame.Power.LowManaText
 	
-	if PvPText and frame:IsMouseOver() then
-		PvPText:Show()
-		if LowManaText and LowManaText:IsShown() then LowManaText:Hide() end
+	PvPText:Show()
+	if LowManaText and LowManaText:IsShown() then LowManaText:Hide() end
 		
-		local time = GetPVPTimer()
-		local min = format("%01.f", floor((time / 1000) / 60))
-		local sec = format("%02.f", floor((time / 1000) - min * 60)) 
+	local time = GetPVPTimer()
+	local min = format("%01.f", floor((time / 1000) / 60))
+	local sec = format("%02.f", floor((time / 1000) - min * 60)) 
 		
-		if(UnitIsPVPFreeForAll(unit)) then
-			if time ~= 301000 and time ~= -1 then
-				PvPText:SetText(PVP.." ".."("..min..":"..sec..")")
-			else
-				PvPText:SetText(PVP)
-			end
-		elseif UnitIsPVP(unit) then
-			if time ~= 301000 and time ~= -1 then
-				PvPText:SetText(PVP.." ".."("..min..":"..sec..")")
-			else
-				PvPText:SetText(PVP)
-			end
+	if(UnitIsPVPFreeForAll(unit)) then
+		if time ~= 301000 and time ~= -1 then
+			PvPText:SetText(PVP.." ".."("..min..":"..sec..")")
 		else
-			PvPText:SetText("")
+			PvPText:SetText(PVP)
 		end
-	elseif PvPText then
-		PvPText:Hide()
-		if LowManaText and not LowManaText:IsShown() then LowManaText:Show() end
+	elseif UnitIsPVP(unit) then
+		if time ~= 301000 and time ~= -1 then
+			PvPText:SetText(PVP.." ".."("..min..":"..sec..")")
+		else
+			PvPText:SetText(PVP)
+		end
+	else
+		PvPText:SetText("")
 	end
 end
 

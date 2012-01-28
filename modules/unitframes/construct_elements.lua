@@ -362,7 +362,7 @@ end
 function UF:Construct_CombatIndicator(frame)
 	local combat = frame:CreateTexture(nil, "OVERLAY")
 	combat:Size(19)
-	combat:Point("CENTER", frame.Health, "CENTER", 0,6)
+	combat:Point("TOPRIGHT", frame.Health, "TOPRIGHT", -10,2)
 	combat:SetVertexColor(0.69, 0.31, 0.31)
 	
 	return combat
@@ -370,7 +370,7 @@ end
 
 function UF:Construct_PvPIndicator(frame)
 	local pvp = frame:CreateFontString(nil, 'OVERLAY')
-	pvp:Point("BOTTOM", frame.Health, "BOTTOM", 0, 7)
+	pvp:Point("BOTTOMLEFT", frame.Health, "BOTTOMLEFT", 2, 2)
 	pvp:SetTextColor(0.69, 0.31, 0.31)
 	UF['fontstrings'][pvp] = true
 	
@@ -492,8 +492,8 @@ function UF:Construct_ResurectionIcon(frame)
 	f:SetFrameLevel(20)
 
 	local tex = f:CreateTexture(nil, "OVERLAY")
-	tex:Point('CENTER', frame.Health.value, 'CENTER')
-	tex:Size(30, 25)
+	tex:Point('LEFT', frame.Health.value, 'LEFT')
+	tex:Size(24, 20)
 	tex:SetDrawLayer('OVERLAY', 7)
 	
 	return tex

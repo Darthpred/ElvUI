@@ -51,4 +51,4 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Mastery', {"MASTERY_UPDATE"}, OnEvent, nil, nil, OnEnter)
+DT:RegisterDatatext("Искусность", {"MASTERY_UPDATE"}, OnEvent, nil, nil, OnEnter)

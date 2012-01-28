@@ -141,7 +141,6 @@ function RU:Initialize()
 	CloseButton:SetAttribute("_onclick", [=[self:GetParent():Hide(); self:GetFrameRef("ShowButton"):Show();]=])
 	CloseButton:SetScript("OnMouseUp", function(self) RaidUtilityPanel.toggled = false end)
 	RaidUtilityPanel:SetFrameRef("CloseButton", CloseButton)
-	
 	--Disband Raid button
 	self:CreateUtilButton("DisbandRaidButton", RaidUtilityPanel, "UIMenuButtonStretchTemplate", RaidUtilityPanel:GetWidth() * 0.8, 18, "TOP", RaidUtilityPanel, "TOP", 0, -5, L['Disband Group'], nil)
 	DisbandRaidButton:SetScript("OnMouseUp", function(self)

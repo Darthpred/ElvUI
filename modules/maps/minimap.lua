@@ -267,7 +267,6 @@ function M:LoadMinimap()
 		MinimapCluster:ClearAllPoints()
 		MinimapCluster:SetAllPoints(Minimap)		
 	end)
-
 	
 	UIParent:HookScript('OnShow', function()
 		FarmModeMap:Hide()

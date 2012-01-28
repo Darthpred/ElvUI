@@ -163,7 +163,7 @@ function UF:Update_PartyFrames(frame, db)
 			frame.originalParent.childList = {}
 		end	
 		frame.originalParent.childList[frame] = true;
-		
+
 		if not InCombatLockdown() then
 			if db.petsGroup.enable then
 				frame:SetParent(frame.originalParent)
@@ -502,7 +502,7 @@ function UF:Update_PartyFrames(frame, db)
 	if not frame:IsElementEnabled('ReadyCheck') then
 		frame:EnableElement('ReadyCheck')
 	end		
-	
+
 	frame:UpdateAllElements()
 end
 

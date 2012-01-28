@@ -357,7 +357,7 @@ function E:Initialize()
 	self:LoadMovers(); --Load Movers
 	
 	self.initialized = true
-	
+
 	if self.db.install_complete == nil or (self.db.install_complete and type(self.db.install_complete) == 'boolean') or (self.db.install_complete and type(tonumber(self.db.install_complete)) == 'number' and tonumber(self.db.install_complete) <= 3.05) then
 		self:Install()
 	end

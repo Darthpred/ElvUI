@@ -206,4 +206,4 @@ end
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Time', nil, nil, Update, Click, OnEnter)
+DT:RegisterDatatext("Время", nil, nil, Update, Click, OnEnter)
