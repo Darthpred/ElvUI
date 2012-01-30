@@ -353,16 +353,16 @@ end
 
 function UF:Construct_RestingIndicator(frame)
 	local resting = frame:CreateTexture(nil, "OVERLAY")
-	resting:Size(22)
-	resting:Point("CENTER", frame.Health, "TOPLEFT", -3, 6)
+	resting:Size(25)
+	resting:Point("TOPRIGHT", frame.Health, "TOPRIGHT", 0, 2)
 	
 	return resting
 end
 
 function UF:Construct_CombatIndicator(frame)
 	local combat = frame:CreateTexture(nil, "OVERLAY")
-	combat:Size(19)
-	combat:Point("TOPRIGHT", frame.Health, "TOPRIGHT", -10,2)
+	combat:Size(20)
+	combat:Point("TOPRIGHT", frame.Health, "TOPRIGHT", -17,2)
 	combat:SetVertexColor(0.69, 0.31, 0.31)
 	
 	return combat
