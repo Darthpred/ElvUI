@@ -297,7 +297,7 @@ function UF:Update_TargetFrame(frame, db)
 		local x, y = self:GetAuraOffset(db.buffs.initialAnchor, db.buffs.anchorPoint)
 		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo, db.debuffs.attachTo)
 
-		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, y)
+		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, 4)
 		buffs:Height(buffs.size * rows)
 		buffs.initialAnchor = db.buffs.initialAnchor
 		buffs["growth-y"] = db.buffs['growth-y']
