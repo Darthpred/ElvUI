@@ -56,15 +56,6 @@ function M:MERCHANT_SHOW()
 	end
 end
 
-function M:ForceProfanity()
-	local isOnline = BNConnected()
-	if(isOnline) then
-		BNSetMatureLanguageFilter(false)
-	end
-	
-	SetCVar("profanityFilter", 0)
-end
-
 function M:DisbandRaidGroup()
 	if InCombatLockdown() then return end -- Prevent user error in combat
 
@@ -116,10 +107,6 @@ function M:Initialize()
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_HORDE', 'PVPMessageEnhancement')
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_ALLIANCE', 'PVPMessageEnhancement')
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_NEUTRAL', 'PVPMessageEnhancement')
-	
-	--%TEMP BLIZZARD FIX%
-	self:RegisterEvent('CVAR_UPDATE', 'ForceProfanity')
-	self:RegisterEvent('BN_MATURE_LANGUAGE_FILTER', 'ForceProfanity')
 	
 	self.MovingTimer = self:ScheduleRepeatingTimer("CheckMovement", 0.1)
 	
