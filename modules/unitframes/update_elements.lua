@@ -71,9 +71,9 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		if type == 'health' then
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("|cffAF5050%s|r |cffD7BEA5-|r |cff%02x%02x%02x%.1f%%|r", E:ShortValue(min), r * 255, g * 255, b * 255, format("%.1f", min / max * 100))
+					value = format("|cffAF5050%s|r |cffD7BEA5-|r |cff%02x%02x%02x%.1f%%|r", min, r * 255, g * 255, b * 255, format("%.1f", min / max * 100))
 				else
-					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(max))
+					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, max)
 				end
 			elseif db[type].text_format == 'current-max' then
 				if min == max then
