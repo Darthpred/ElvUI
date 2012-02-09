@@ -71,7 +71,7 @@ DF["nameplate"] = {
 --Auras
 DF['auras'] = {
 	['enable'] = true,
-	['perRow'] = 12,
+	['perRow'] = 16,
 }
 
 --Chat
