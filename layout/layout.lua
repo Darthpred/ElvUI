@@ -70,12 +70,12 @@ function LO:ToggleChatPanels()
 		LeftChatTab:Show()
 		RightChatPanel.backdrop:Show()
 		RightChatTab:Show()		
-		LeftChatDataPanel:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 5 + SIDE_BUTTON_WIDTH, 5)
-		LeftChatDataPanel:Point('TOPRIGHT', LeftChatPanel, 'BOTTOMRIGHT', -5, (5 + PANEL_HEIGHT))		
-		RightChatDataPanel:Point('BOTTOMLEFT', RightChatPanel, 'BOTTOMLEFT', 5, 5)
-		RightChatDataPanel:Point('TOPRIGHT', RightChatPanel, 'BOTTOMRIGHT', -(5 + SIDE_BUTTON_WIDTH), 5 + PANEL_HEIGHT)		
-		LeftChatToggleButton:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 5, 5)
-		RightChatToggleButton:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', -5, 5)
+		LeftChatDataPanel:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', SIDE_BUTTON_WIDTH, 2)
+		LeftChatDataPanel:Point('TOPRIGHT', LeftChatPanel, 'BOTTOMRIGHT', -2, PANEL_HEIGHT)		
+		RightChatDataPanel:Point('BOTTOMLEFT', RightChatPanel, 'BOTTOMLEFT', 2, 2)
+		RightChatDataPanel:Point('TOPRIGHT', RightChatPanel, 'BOTTOMRIGHT', -SIDE_BUTTON_WIDTH, PANEL_HEIGHT)		
+		LeftChatToggleButton:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 2, 2)
+		RightChatToggleButton:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', -2, 2)
 	elseif E.db.core.panelBackdrop == 'HIDEBOTH' then
 		LeftChatPanel.backdrop:Hide()
 		LeftChatTab:Hide()
@@ -131,8 +131,8 @@ function LO:CreateChatPanels()
 	
 	--Left Chat Tab
 	local lchattab = CreateFrame('Frame', 'LeftChatTab', LeftChatPanel)
-	lchattab:Point('TOPLEFT', lchat, 'TOPLEFT', 5, -5)
-	lchattab:Point('BOTTOMRIGHT', lchat, 'TOPRIGHT', -5, -(5 + PANEL_HEIGHT))
+	lchattab:Point('TOPLEFT', lchat, 'TOPLEFT', 2, -2)
+	lchattab:Point('BOTTOMRIGHT', lchat, 'TOPRIGHT', -2, -PANEL_HEIGHT)
 	lchattab:SetTemplate('Default', true)
 	
 	--Left Chat Data Panel
@@ -176,8 +176,8 @@ function LO:CreateChatPanels()
 	
 	--Right Chat Tab
 	local rchattab = CreateFrame('Frame', 'RightChatTab', RightChatPanel)
-	rchattab:Point('TOPRIGHT', rchat, 'TOPRIGHT', -5, -5)
-	rchattab:Point('BOTTOMLEFT', rchat, 'TOPLEFT', 5, -(5 + PANEL_HEIGHT))
+	rchattab:Point('TOPRIGHT', rchat, 'TOPRIGHT', -2, -2)
+	rchattab:Point('BOTTOMLEFT', rchat, 'TOPLEFT', 2, -PANEL_HEIGHT)
 	rchattab:SetTemplate('Default', true)
 	
 	--Right Chat Data Panel
