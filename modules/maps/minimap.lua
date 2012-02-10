@@ -144,11 +144,12 @@ function M:LoadMinimap()
 	mmholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
 	mmholder:Width((Minimap:GetWidth() + 29) + E.RBRWidth)
 	mmholder:Height(Minimap:GetHeight() + 53)
-	
+		
 	Minimap:ClearAllPoints()
 	Minimap:Point("TOPLEFT", mmholder, "TOPLEFT", 2, -2)
 	Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
 	Minimap:CreateBackdrop('Default')
+	Minimap:SetFrameStrata('LOW');
 	
 	--Fix spellbook taint
 	ShowUIPanel(SpellBookFrame)
