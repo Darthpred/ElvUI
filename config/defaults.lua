@@ -200,6 +200,17 @@ DF['datatexts'] = {
 			},
 			['LeftMiniPanel'] = 'Guild',
 			['RightMiniPanel'] = 'Friends',
+			['Bottom_Panel'] = {
+			left = 'Currency',
+			middle = 'Call to Arms',
+			right = 'Bags',
+			},
+			['Top_Panel'] = {
+			left = 'Friends',
+			middle = 'Spec Switch',
+			right = 'Guild',
+			},
+			['Map_Panel'] = 'Talents',
 		},
 		['spec2'] = {
 			['LeftChatDataPanel'] = {
@@ -213,7 +224,18 @@ DF['datatexts'] = {
 				['right'] = 'Gold',
 			},
 			['LeftMiniPanel'] = 'Guild',
-			['RightMiniPanel'] = 'Friends',	
+			['RightMiniPanel'] = 'Friends',
+			['Bottom_Panel'] = {
+			left = 'Currency',
+			middle = 'Call to Arms',
+			right = 'Bags',
+			},
+			['Top_Panel'] = {
+			left = 'Friends',
+			middle = 'Spec Switch',
+			right = 'Guild',
+			},
+			['Map_Panel'] = 'Talents',
 		},
 	},
 	['localtime'] = true,

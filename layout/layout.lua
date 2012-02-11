@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local LO = E:NewModule('Layout', 'AceEvent-3.0');
 
 local PANEL_HEIGHT = 22;
@@ -9,6 +9,7 @@ E.Layout = LO;
 function LO:Initialize()
 	self:CreateChatPanels()
 	self:CreateMinimapPanels()
+	self:CreateDataPanels() -- Инициализация добавления панелей под инфотексты
 end
 
 
@@ -243,4 +244,55 @@ function LO:CreateMinimapPanels()
 	configtoggle:SetScript('OnClick', function() E:ToggleConfig() end)
 end
 
+-- Новые панели инфотекстов
+function LO:CreateDataPanels()
+	local bottom_bar = CreateFrame('Frame', "Bottom_Panel", E.UIParent)
+	bottom_bar:SetTemplate('Default', true)
+	bottom_bar:SetFrameStrata('LOW')
+	bottom_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", Top_Panel, "BOTTOMLEFT", 0, -E.mult); 
+		self:Size(686, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Bottom_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
+	bottom_bar:Hide()
+	
+	local top_bar = CreateFrame('Frame', 'Top_Panel', E.UIParent)
+	top_bar:SetTemplate('Default', true)
+	top_bar:SetFrameStrata('LOW')
+	top_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", ElvUI_Bar1, "BOTTOMLEFT", 0, -E.mult); 
+		self:Size(686, 22);
+		E:CreateMover(self, "BottomBarMover", "Двойная панель") 
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_bar:Hide()
+	
+	local map = CreateFrame('Frame', 'Map_Panel', E.UIParent)
+	map:Point("TOPLEFT", E.UIParent, "BOTTOMLEFT", 0, -E.mult)
+	map:SetTemplate('Default', true)
+	map:SetFrameStrata('LOW')
+	map:Hide()
+	map:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", Minimap, "BOTTOMLEFT", -2, -26); 
+		self:Size(211, 21)
+		E:CreateMover(map, "MapBarMover", "Панель карты") 
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Map_Panel, 1, 'ANCHOR_BOTTOM', 0, -4)
+
+end
+
+--Отображать панели
+function ExtraDataBarSetup()
+Top_Panel:Show()
+Bottom_Panel:Show()
+Map_Panel:Show()
+end
+
+--Обновлять панели на каждый экран загрузки
+function LO:PLAYER_ENTERING_WORLD(...)
+ExtraDataBarSetup()
+self:UnregisterEvent("PLAYER_ENTERING_WORLD");
+end
+--Конец добавления панелей
+LO:RegisterEvent('PLAYER_ENTERING_WORLD')
 E:RegisterModule(LO:GetName())
