@@ -2,6 +2,9 @@
 local L = AceLocale:NewLocale("ElvUI", "ruRU")
 if not L then return; end
 
+L["Bottom_Panel"] = "Нижняя двойная панель"
+L["Top_Panel"] = "Верхняя двойная панель"
+L["Map_Panel"] = "Панель карты"
 L["24-Hour Time"] = "24х часовой формат"
 L["Accept Invites"] = "Принимать приглашения"
 L["Achievement Frame"] = "Достижения"
