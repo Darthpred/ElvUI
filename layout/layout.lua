@@ -252,7 +252,7 @@ function LO:CreateDataPanels()
 	bottom_bar:SetFrameStrata('LOW')
 	bottom_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Top_Panel, "BOTTOMLEFT", 0, -E.mult); 
-		self:Size(686, 22);
+		self:Size(685, 22);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Bottom_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
 	bottom_bar:Hide()
@@ -262,7 +262,7 @@ function LO:CreateDataPanels()
 	top_bar:SetFrameStrata('LOW')
 	top_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", ElvUI_Bar1, "BOTTOMLEFT", 0, -E.mult); 
-		self:Size(686, 22);
+		self:Size(685, 22);
 		E:CreateMover(self, "BottomBarMover", "Двойная панель") 
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
