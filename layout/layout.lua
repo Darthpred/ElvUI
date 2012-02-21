@@ -275,7 +275,7 @@ function LO:CreateDataPanels()
 	map:Hide()
 	map:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Minimap, "BOTTOMLEFT", -2, -26); 
-		self:Size(211, 21)
+		self:Size(211, 20)
 		E:CreateMover(map, "MapBarMover", "Панель карты") 
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Map_Panel, 1, 'ANCHOR_BOTTOM', 0, -4)
