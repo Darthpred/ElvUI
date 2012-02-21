@@ -96,17 +96,28 @@ P['skins'] = {
 P['datatexts'] = {
 	['panels'] = {
 		['LeftChatDataPanel'] = {
-			['left'] = 'Armor',
-			['middle'] = 'Durability',
-			['right'] = 'Avoidance',
+			['left'] = 'Призыв к оружию',
+			['middle'] = 'Меткость',
+			['right'] = 'Искусность',
 		},
 		['RightChatDataPanel'] = {
-			['left'] = 'System',
-			['middle'] = 'Time',	
-			['right'] = 'Gold',
-},
-		['LeftMiniPanel'] = 'Guild',
-		['RightMiniPanel'] = 'Friends',
+			['left'] = 'Сила заклинаний',
+			['middle'] = 'Скорость',	
+			['right'] = 'Крит',
+		},
+		['Bottom_Panel'] = {
+		['left'] = 'Золото',
+		['middle'] = 'Сумки',
+		['right'] = 'Прочность',
+		},
+		['Top_Panel'] = {
+		['left'] = 'Друзья',
+		['middle'] = 'Система',
+		['right'] = 'Броня',
+		},	
+		['LeftMiniPanel'] = 'Время',
+		['RightMiniPanel'] = 'Гильдия',
+		['Map_Panel'] = 'Таланты',
 	},
 	['localtime'] = true,
 	['time24'] = false,
