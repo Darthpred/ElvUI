@@ -361,7 +361,7 @@ function B:Layout(isBank)
 					elseif specialType == 0x0010 then -- Inscription
 						b.frame:SetBackdropBorderColor(74/255, 77/255,  224/255)
 					elseif specialType == 0x0020 then -- Herbs
-						b.frame:SetBackdropBorderColor(18/255, 181/255,  32/255)
+						b.frame:SetBackdropBorderColor(171/255, 214/255, 116/255)
 					elseif specialType == 0x0040 then -- Enchanting
 						b.frame:SetBackdropBorderColor(104/255, 205/255, 255/255)
 					elseif specialType == 0x0080 then -- Engineering
