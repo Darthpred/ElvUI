@@ -363,7 +363,7 @@ function B:Layout(isBank)
 					elseif specialType == 0x0020 then -- Herbs
 						b.frame:SetBackdropBorderColor(18/255, 181/255,  32/255)
 					elseif specialType == 0x0040 then -- Enchanting
-						b.frame:SetBackdropBorderColor(160/255, 3/255,  168/255)
+						b.frame:SetBackdropBorderColor(104/255, 205/255, 255/255)
 					elseif specialType == 0x0080 then -- Engineering
 						b.frame:SetBackdropBorderColor(232/255, 118/255,  46/255)
 					elseif specialType == 0x0200 then -- Gems
