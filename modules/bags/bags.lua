@@ -249,12 +249,12 @@ function B:Layout(isBank)
 		bs = BAGS_BACKPACK
 		cols = (floor((E.db.general.panelWidth)/370 * 10))
 		f = bagFrame
-		bSize = 30
+		bSize = 22
 	else
 		bs = BAGS_BANK
 		cols = (floor((E.db.general.panelWidth)/370 * 10))
 		f = bankFrame
-		bSize = 30
+		bSize = 22
 	end
 
 	if not f then return end
@@ -311,7 +311,7 @@ function B:Layout(isBank)
 	end
 
 	f:Width((E.db.general.panelWidth))
-	f:Height(rows * 31 + (rows - 1) * 4 + offset + 24)
+	f:Height(rows * 23 + (rows - 1) * 4 + offset + 24)
 
 	f.HolderFrame:SetWidth(33.5 * cols)
 	f.HolderFrame:SetHeight(f:GetHeight() - 8)
@@ -343,9 +343,9 @@ function B:Layout(isBank)
 					end
 				end
 
-				xOff = (x * 31) + (x * 2.5)
+				xOff = (x * 23) + (x * 2.5)
 
-				yOff = offset + 12 + (y * 31) + ((y - 1) * 4)
+				yOff = offset + 12 + (y * 23) + ((y - 1) * 4)
 				yOff = yOff * -1
 
 				b.frame:ClearAllPoints()
