@@ -490,9 +490,9 @@ function B:CreateBagFrame(type)
 	f:SetFrameStrata("DIALOG")
 
 	if type == 'Bags' then
-		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 5, E.db.general.panelHeight - 24)
+		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 5, E.db.general.panelHeight - 21)
 	else
-		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -5, E.db.general.panelHeight - 24)
+		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -5, E.db.general.panelHeight - 21)
 	end
 
 	f.HolderFrame = CreateFrame("Frame", name.."HolderFrame", f)
