@@ -247,12 +247,12 @@ function B:Layout(isBank)
 
 	if not isBank then
 		bs = BAGS_BACKPACK
-		cols = (floor((E.db.general.panelWidth)/370 * 10))
+		cols = (floor((E.db.general.panelWidth)/370 * 14))
 		f = bagFrame
 		bSize = 22
 	else
 		bs = BAGS_BANK
-		cols = (floor((E.db.general.panelWidth)/370 * 10))
+		cols = (floor((E.db.general.panelWidth)/370 * 14))
 		f = bankFrame
 		bSize = 22
 	end
@@ -313,7 +313,7 @@ function B:Layout(isBank)
 	f:Width((E.db.general.panelWidth))
 	f:Height(rows * 23 + (rows - 1) * 4 + offset + 24)
 
-	f.HolderFrame:SetWidth(33.5 * cols)
+	f.HolderFrame:SetWidth(25.5 * cols)
 	f.HolderFrame:SetHeight(f:GetHeight() - 8)
 	f.HolderFrame:SetPoint("BOTTOM", f, "BOTTOM")
 
@@ -490,9 +490,9 @@ function B:CreateBagFrame(type)
 	f:SetFrameStrata("DIALOG")
 
 	if type == 'Bags' then
-		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 5, E.db.general.panelHeight - 21)
+		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 2, E.db.general.panelHeight - 21)
 	else
-		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -5, E.db.general.panelHeight - 21)
+		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -2, E.db.general.panelHeight - 21)
 	end
 
 	f.HolderFrame = CreateFrame("Frame", name.."HolderFrame", f)
