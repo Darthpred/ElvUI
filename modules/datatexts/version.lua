@@ -3,6 +3,7 @@ local DT = E:GetModule('DataTexts')
 
 local displayString = '';
 local lastPanel;
+E.version = GetAddOnMetadata("ElvUI", "Version");
 
 local function Update(self, t)
 
@@ -10,7 +11,7 @@ end
 
 local function OnEvent(self, event, ...)
 	lastPanel = self
-	self.text:SetFormattedText(displayString, 'ElvUI v', 3.22);
+	self.text:SetFormattedText(displayString, 'ElvUI v', E.version);
 end
 
 local function Click()
@@ -24,7 +25,7 @@ local function OnEnter(self)
 end
 
 local function ValueColorUpdate(hex, r, g, b)
-	displayString = string.join("", "%s", hex, "%.2f|r", "-alpha : Darth Predator's edit")
+	displayString = string.join("", "%s", hex, "%.2f|r", " : Darth Predator's edit")
 	
 	if lastPanel ~= nil then
 		OnEvent(lastPanel)
