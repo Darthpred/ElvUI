@@ -3,25 +3,30 @@ local DT = E:GetModule('DataTexts')
 
 local displayString = '';
 local lastPanel;
+local self = lastPanel
 E.version = GetAddOnMetadata("ElvUI", "Version");
 
-local function Update(self, t)
-
-end
-
 local function OnEvent(self, event, ...)
-	lastPanel = self
 	self.text:SetFormattedText(displayString, 'ElvUI v', E.version);
 end
 
 local function Click()
-
+	ElvConfigToggle:Click();
 end
 
 local function OnEnter(self)
-	--DT:SetupTooltip(self)
+	DT:SetupTooltip(self)
 
-	--GameTooltip:Show()
+	GameTooltip:AddDoubleLine("Сборка ElvUI версии", E.version)
+	GameTooltip:AddDoubleLine("Редакция от Darth Predator (Дартпредатор - Свежеватель Душ)")
+	GameTooltip:AddLine(" ")
+	GameTooltip:AddLine("При возникновении вопросов или желании подогнать сборку под себя обращаться:")
+	GameTooltip:AddDoubleLine("- Игровая почта")
+	GameTooltip:AddDoubleLine("- Личное сообщение на форуме TukUI, ник Darth Predator")
+	GameTooltip:AddDoubleLine("- Личное сообщение на форуме Curse, ник Darth_Predator")
+	GameTooltip:AddDoubleLine("- Сайт Shadowmage.ru")
+	
+	GameTooltip:Show()
 end
 
 local function ValueColorUpdate(hex, r, g, b)
@@ -43,5 +48,5 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	onEnterFunc - function to fire OnEnter
 	onLeaveFunc - function to fire OnLeave, if not provided one will be set for you that hides the tooltip.
 ]]
-DT:RegisterDatatext("Версия", {'PLAYER_ENTERING_WORLD'}, OnEvent, Update, Click, OnEnter)
+DT:RegisterDatatext("Сборка", {'PLAYER_ENTERING_WORLD'}, OnEvent, Update, Click, OnEnter)
 
