@@ -357,7 +357,7 @@ end
 
 function UF:Construct_RestingIndicator(frame)
 	local resting = frame:CreateTexture(nil, "OVERLAY")
-	resting:Size(25)
+	resting:Size(20)
 	resting:Point("TOPRIGHT", frame.Health, "TOPRIGHT", 0, 2)
 	
 	return resting
