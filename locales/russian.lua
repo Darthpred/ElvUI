@@ -5,6 +5,12 @@ if not L then return; end
 L["Bottom_Panel"] = "Нижняя двойная панель"
 L["Top_Panel"] = "Верхняя двойная панель"
 L["Map_Panel"] = "Панель карты"
+L["Top_Center"] = "Верхняя центральная"
+L["Top_Center_Left"] = "Верхняя центральная слева"
+L["Top_Center_Right"] = "Верхняя центральная справа"
+L["Top_Left"] = "Верхняя левая"
+L["Top_Right"] = "Верхняя правая"
+
 L["24-Hour Time"] = "24х часовой формат"
 L["Accept Invites"] = "Принимать приглашения"
 L["Achievement Frame"] = "Достижения"

@@ -247,6 +247,7 @@ end
 
 -- Новые панели инфотекстов
 function LO:CreateDataPanels()
+	--Нижняя двойная панель
 	local bottom_bar = CreateFrame('Frame', "Bottom_Panel", E.UIParent)
 	bottom_bar:SetTemplate('Default', true)
 	bottom_bar:SetFrameStrata('LOW')
@@ -257,6 +258,7 @@ function LO:CreateDataPanels()
 	E:GetModule('DataTexts'):RegisterPanel(Bottom_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
 	bottom_bar:Hide()
 	
+	--Верхняя двойная панель
 	local top_bar = CreateFrame('Frame', 'Top_Panel', E.UIParent)
 	top_bar:SetTemplate('Default', true)
 	top_bar:SetFrameStrata('LOW')
@@ -268,6 +270,7 @@ function LO:CreateDataPanels()
 	E:GetModule('DataTexts'):RegisterPanel(Top_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
 	top_bar:Hide()
 	
+	--Панель у карты
 	local map = CreateFrame('Frame', 'Map_Panel', E.UIParent)
 	map:Point("TOPLEFT", E.UIParent, "BOTTOMLEFT", 0, -E.mult)
 	map:SetTemplate('Default', true)
@@ -279,6 +282,61 @@ function LO:CreateDataPanels()
 		E:CreateMover(map, "MapBarMover", "Панель карты") 
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Map_Panel, 1, 'ANCHOR_BOTTOM', 0, -4)
+	
+	--Верхняя левая крайняя панель
+	local top_left_bar = CreateFrame('Frame', "Top_Left", E.UIParent)
+	top_left_bar:SetTemplate('Default', true)
+	top_left_bar:SetFrameStrata('LOW')
+	top_left_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", E.UIParent, "TOPLEFT", 0, 0); 
+		self:Size(386, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_left_bar:Hide()
+	
+	--Верхняя правая крайняя панель
+	local top_right_bar = CreateFrame('Frame', "Top_Right", E.UIParent)
+	top_right_bar:SetTemplate('Default', true)
+	top_right_bar:SetFrameStrata('LOW')
+	top_right_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", 0, 0); 
+		self:Size(386, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_right_bar:Hide()
+	
+	--Верхняя правая панель
+	local top_center_right_bar = CreateFrame('Frame', "Top_Center_Right", E.UIParent)
+	top_center_right_bar:SetTemplate('Default', true)
+	top_center_right_bar:SetFrameStrata('LOW')
+	top_center_right_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPRIGHT", Top_Right, "TOPLEFT", -1, 0); 
+		self:Size(386, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_right_bar:Hide()
+	
+	--Верхняя левая панель
+	local top_center_left_bar = CreateFrame('Frame', "Top_Center_Left", E.UIParent)
+	top_center_left_bar:SetTemplate('Default', true)
+	top_center_left_bar:SetFrameStrata('LOW')
+	top_center_left_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", Top_Left, "TOPRIGHT", 1, 0); 
+		self:Size(386, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_left_bar:Hide()
+	
+	--Верхняя центральная панель
+	local top_center_bar = CreateFrame('Frame', "Top_Center", E.UIParent)
+	top_center_bar:SetTemplate('Default', true)
+	top_center_bar:SetFrameStrata('LOW')
+	top_center_bar:SetScript('OnShow', function(self) 
+		self:Point("TOP", E.UIParent, "TOP", 0, 0); 
+		self:Size(551, 22);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center, 1, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_bar:Hide()
 
 end
 
@@ -287,6 +345,11 @@ function ExtraDataBarSetup()
 Top_Panel:Show()
 Bottom_Panel:Show()
 Map_Panel:Show()
+Top_Left:Show()
+Top_Right:Show()
+Top_Center_Right:Show()
+Top_Center_Left:Show()
+Top_Center:Show()
 end
 
 --Обновлять панели на каждый экран загрузки
