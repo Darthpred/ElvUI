@@ -169,48 +169,27 @@ local function SetupCVars()
 	InstallStepComplete:Show()					
 end	
 
-local function RestoreDefaults(currentTable, defaultTable)
-	table.wipe(currentTable)
-		
-	for option, value in pairs(defaultTable) do
-		if type(value) ~= 'table' then
-			currentTable[option] = value
-		else
-			currentTable[option] = {}
-			
-			for opt, val in pairs(defaultTable[option]) do
-				if type(val) ~= 'table' then
-					currentTable[option][opt] = val
-				else
-					currentTable[option][opt] = {}
-					for o, v in pairs(defaultTable[option][opt]) do
-						currentTable[option][opt][o] = v							
-					end
-				end
-			end
-		end
-	end
-end
-
 function E:SetupResolution()
 	if E.lowversion then
 		E.db.general.panelWidth = 400
 		E.db.general.panelHeight = 180
 		
-		RestoreDefaults(E.db.actionbar, P.actionbar)
+		E:CopyTable(E.db.actionbar, P.actionbar)
 		
 		E.db.actionbar.bar1.heightMult = 2;
 		E.db.actionbar.bar2.enabled = true;
 		E.db.actionbar.bar3.enabled = false;
 		E.db.actionbar.bar5.enabled = false;
+		E:GetModule('ActionBars'):ResetMovers('')
 		E.db.actionbar.bar2["position"] = {
 			["p2"] = "BOTTOM",
 			["p"] = "CENTER",
 			["p3"] = 0,
 			["p4"] = 56.18668365478516,
 		}
+
 		
-		RestoreDefaults(E.db.unitframe.units, P.unitframe.units)
+		E:CopyTable(E.db.unitframe.units, P.unitframe.units)
 		
 		E.db.unitframe.fontsize = 11
 		
@@ -248,10 +227,11 @@ function E:SetupResolution()
 		E.db.general.panelWidth = P.general.panelWidth
 		E.db.general.panelHeight = P.general.panelHeight
 		
-		RestoreDefaults(E.db.actionbar, P.actionbar)
-		RestoreDefaults(E.db.unitframe.units, P.unitframe.units)
+		E:CopyTable(E.db.actionbar, P.actionbar)
+		E:CopyTable(E.db.unitframe.units, P.unitframe.units)
 		E.db.unitframe.fontsize = 12
 		E.db.unitframe.units["positions"] = nil;
+		E:GetModule('ActionBars'):ResetMovers('')
 		E.db.lowresolutionset = nil;
 	end
 
@@ -265,8 +245,12 @@ end
 function E:SetupLayout(layout)
 	
 	--Unitframes
-	RestoreDefaults(E.db.unitframe.units, P.unitframe.units)
+	E:CopyTable(E.db.unitframe.units, P.unitframe.units)
 	if layout == 'healer' then
+		E.db.unitframe.units.party.health.frequentUpdates = true;
+		E.db.unitframe.units.raid625.health.frequentUpdates = true;
+		E.db.unitframe.units.raid2640.health.frequentUpdates = true;
+		
 		E.db.unitframe.units.boss.width = 200;
 		E.db.unitframe.units.boss.castbar.width = 200;
 		E.db.unitframe.units.arena.width = 200;
@@ -367,7 +351,7 @@ function E:SetupLayout(layout)
 	end
 	
 	--Datatexts
-	RestoreDefaults(E.db.datatexts.panels, P.datatexts.panels)
+	E:CopyTable(E.db.datatexts.panels, P.datatexts.panels)
 	if layout == 'tank' then
 		E.db.datatexts.panels.LeftChatDataPanel.left = 'Armor';
 		E.db.datatexts.panels.LeftChatDataPanel.right = 'Avoidance';
@@ -574,7 +558,7 @@ function E:Install()
 
 	--Create Frame
 	if not ElvUIInstallFrame then
-		local f = CreateFrame("Frame", "ElvUIInstallFrame", E.UIParent)
+		local f = CreateFrame("Button", "ElvUIInstallFrame", E.UIParent)
 		f:Size(550, 400)
 		f:SetTemplate("Transparent")
 		f:CreateShadow("Default")

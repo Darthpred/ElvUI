@@ -62,8 +62,11 @@ P['auras'] = {
 
 --Chat
 P['chat'] = {
-	['url'] = true;
-	['shortChannels'] = true;
+	['url'] = true,
+	['shortChannels'] = true,
+	['hyperlinkHover'] = true,
+	['throttleInterval'] = 45,
+	['scrollDownInterval'] = 15,
 }
 
 --ClassTimers
@@ -780,6 +783,7 @@ P['unitframe'] = {
 				['text_format'] = 'current-percent',
 				['position'] = 'RIGHT',
 				['orientation'] = 'HORIZONTAL',
+				['frequentUpdates'] = false,
 			},
 			['power'] = {
 				['enable'] = true,
@@ -875,6 +879,7 @@ P['unitframe'] = {
 				['text_format'] = 'deficit',
 				['position'] = 'BOTTOM',
 				['orientation'] = 'HORIZONTAL',
+				['frequentUpdates'] = false,
 			},
 			['power'] = {
 				['enable'] = true,
@@ -957,6 +962,7 @@ P['unitframe'] = {
 				['text_format'] = 'deficit',
 				['position'] = 'BOTTOM',
 				['orientation'] = 'HORIZONTAL',
+				['frequentUpdates'] = false,
 			},
 			['power'] = {
 				['enable'] = false,

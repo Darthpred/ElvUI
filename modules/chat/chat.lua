@@ -3,6 +3,8 @@ local CH = E:NewModule('Chat', 'AceTimer-3.0', 'AceHook-3.0', 'AceEvent-3.0')
 
 local CreatedFrames = 0;
 local lines = {};
+local msgList, msgCount, msgTime = {}, {}, {}
+
 local DEFAULT_STRINGS = {
 	BATTLEGROUND = L['BG'],
 	GUILD = L['G'],
@@ -12,6 +14,18 @@ local DEFAULT_STRINGS = {
 	BATTLEGROUND_LEADER = L['BGL'],
 	PARTY_LEADER = L['PL'],
 	RAID_LEADER = L['RL'],	
+}
+
+local hyperlinkTypes = {
+	['item'] = true,
+	['spell'] = true,
+	['unit'] = true,
+	['quest'] = true,
+	['enchant'] = true,
+	['achievement'] = true,
+	['instancelock'] = true,
+	['talent'] = true,
+	['glyph'] = true,
 }
 
 function CH:StyleChat(frame)
@@ -140,6 +154,7 @@ function CH:SetupTempChat()
 end
 
 function CH:PositionChat(override)
+	if E.global.chat.enable ~= true then return end
 	if (InCombatLockdown() and not override and self.initialMove) or (IsMouseButtonDown("LeftButton") and not override) then return end
 	
 	local chat, chatbg, tab, id, point, button, isDocked, chatFound
@@ -226,6 +241,12 @@ local function UpdateChatTabColor(hex, r, g, b)
 end
 E['valueColorUpdateFuncs'][UpdateChatTabColor] = true
 
+function CH:ScrollToBottom(frame)
+	frame:ScrollToBottom()
+	
+	self:CancelTimer(frame.ScrollTimer, true)
+end
+
 function FloatingChatFrame_OnMouseScroll(frame, delta)
 	if delta < 0 then
 		if IsShiftKeyDown() then
@@ -243,6 +264,14 @@ function FloatingChatFrame_OnMouseScroll(frame, delta)
 				frame:ScrollUp()
 			end
 		end
+		
+		if CH.db.scrollDownInterval ~= 0 then
+			if frame.ScrollTimer then
+				CH:CancelTimer(frame.ScrollTimer, true)
+			end
+
+			frame.ScrollTimer = CH:ScheduleTimer('ScrollToBottom', CH.db.scrollDownInterval, frame)
+		end		
 	end
 end
 
@@ -322,6 +351,51 @@ if E:IsFoolsDay() then
 	end
 end
 
+function CH:OnHyperlinkEnter(frame, refString)
+	if InCombatLockdown() then return; end
+	local linkToken = refString:match("^([^:]+)")
+	if hyperlinkTypes[linkToken] then
+		ShowUIPanel(GameTooltip)
+		GameTooltip:SetOwner(frame, "ANCHOR_CURSOR")
+		GameTooltip:SetHyperlink(refString)
+		GameTooltip:Show()
+	end
+end
+
+function CH:OnHyperlinkLeave(frame, refString)
+	local linkToken = refString:match("^([^:]+)")
+	if hyperlinkTypes[linkToken] then
+		HideUIPanel(GameTooltip)
+	end
+end
+
+function CH:EnableHyperlink()
+	for i = 1, NUM_CHAT_WINDOWS do
+		local frame = _G[format("ChatFrame%s", i)]
+		self:HookScript(frame, 'OnHyperlinkEnter')
+		self:HookScript(frame, 'OnHyperlinkLeave')		
+	end
+end
+
+function CH:DisableHyperlink()
+	for i = 1, NUM_CHAT_WINDOWS do
+		local frame = _G[format("ChatFrame%s", i)]
+		self:Unhook(frame, 'OnHyperlinkEnter')
+		self:Unhook(frame, 'OnHyperlinkLeave')			
+	end
+end
+
+function CH:EnableChatThrottle()
+	self:RegisterEvent("CHAT_MSG_CHANNEL", "ChatThrottleHandler")
+	self:RegisterEvent("CHAT_MSG_YELL", "ChatThrottleHandler")	
+end
+
+function CH:DisableChatThrottle()
+	self:UnregisterEvent("CHAT_MSG_CHANNEL")
+	self:UnregisterEvent("CHAT_MSG_YELL")	
+	table.wipe(msgList); table.wipe(msgCount); table.wipe(msgTime)
+end
+
 function CH:SetupChat(event, ...)	
 	for i = 1, NUM_CHAT_WINDOWS do
 		local frame = _G[format("ChatFrame%s", i)]
@@ -329,6 +403,14 @@ function CH:SetupChat(event, ...)
 		FCFTab_UpdateAlpha(frame)
 	end	
 	
+	if self.db.hyperlinkHover then
+		self:EnableHyperlink()
+	end
+	
+	if self.db.throttleInterval ~= 0 then
+		self:EnableChatThrottle()
+	end
+		
 	GeneralDockManager:SetParent(LeftChatPanel)
 	self:ScheduleRepeatingTimer('PositionChat', 1)
 	self:PositionChat(true)
@@ -345,6 +427,25 @@ local sizes = {
 	":14",
 }
 
+local function PrepareMessage(author, message)
+	return author:upper() .. message
+end
+
+function CH:ChatThrottleHandler(event, ...)
+	local arg1, arg2 = ...
+	
+	if arg2 ~= "" then
+		local message = PrepareMessage(arg2, arg1)
+		if msgList[message] == nil then
+			msgList[message] = true
+			msgCount[message] = 1
+			msgTime[message] = time()
+		else
+			msgCount[message] = msgCount[message] + 1
+		end
+	end
+end
+
 local locale = GetLocale()
 function CH:CHAT_MSG_CHANNEL(...)
 	local isSpam = nil
@@ -355,7 +456,28 @@ function CH:CHAT_MSG_CHANNEL(...)
 	if isSpam then
 		return true;
 	else
-		return CH.FindURL(self, ...)
+		local event, message, author = ...
+		local blockFlag = false
+		local msg = PrepareMessage(author, message)
+		
+		if msg == nil then return CH.FindURL(self, ...) end	
+		-- ignore player messages
+		if author == UnitName("player") then return CH.FindURL(self, ...) end
+		if msgList[msg] and CH.db.throttleInterval ~= 0 then
+			if difftime(time(), msgTime[msg]) <= CH.db.throttleInterval then
+				blockFlag = true
+			end
+		end
+		
+		if blockFlag then
+			return true;
+		else
+			if CH.db.throttleInterval ~= 0 then
+				msgTime[msg] = time()
+			end
+			
+			return CH.FindURL(self, ...)
+		end
 	end
 end
 
@@ -368,7 +490,29 @@ function CH:CHAT_MSG_YELL(...)
 	if isSpam then
 		return true;
 	else
-		return CH.FindURL(self, ...)
+		local event, message, author = ...
+		local blockFlag = false
+		local msg = PrepareMessage(author, message)
+		
+		if msg == nil then return CH.FindURL(self, ...) end	
+		
+		-- ignore player messages
+		if author == UnitName("player") then return CH.FindURL(self, ...) end
+		if msgList[msg] and msgCount[msg] > 1 and CH.db.throttleInterval ~= 0 then
+			if difftime(time(), msgTime[msg]) <= CH.db.throttleInterval then
+				blockFlag = true
+			end
+		end
+		
+		if blockFlag then
+			return true;
+		else
+			if CH.db.throttleInterval ~= 0 then
+				msgTime[msg] = time()
+			end
+			
+			return CH.FindURL(self, ...)
+		end
 	end
 end
 

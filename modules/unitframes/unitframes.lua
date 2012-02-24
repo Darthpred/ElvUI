@@ -215,6 +215,7 @@ end
 local UNITFRAMES = UF
 function UF:Update_AllFrames()
 	if InCombatLockdown() then self:RegisterEvent('PLAYER_REGEN_ENABLED'); return end
+	if E.global["unitframe"].enable ~= true then return; end
 	self:UpdateColors()
 	for unit in pairs(self['handledunits']) do
 		if self.db['units'][unit].enable then
@@ -453,6 +454,14 @@ function UF:Initialize()
 	self.db = E.db["unitframe"]
 	if E.global["unitframe"].enable ~= true then return; end
 	E.UnitFrames = UF;
+	
+	--Database conversion from ElvUI v3.2.2 and below.
+	local specToCopy = E.db.unitframe.mainSpec
+	if not specToCopy then specToCopy = 'Primary' end
+	if specToCopy and E.db.unitframe.layouts and E.db.unitframe.layouts[specToCopy] then
+		E:CopyTable(E.db.unitframe.units, E.db.unitframe.layouts[specToCopy])
+		E.db.unitframe.layouts = nil;
+	end
 
 	
 	ElvUF:RegisterStyle('ElvUF', function(frame, unit)
@@ -494,15 +503,15 @@ end
 function UF:ResetUnitSettings(unit)
 	local db = self.db['units'][unit]
 	
-	for option, value in pairs(DF['unitframe']['units'][unit]) do
+	for option, value in pairs(P['unitframe']['units'][unit]) do
 		if type(value) ~= 'table' then
 			db[option] = value
 		else
-			for opt, val in pairs(DF['unitframe']['units'][unit][option]) do
+			for opt, val in pairs(P['unitframe']['units'][unit][option]) do
 				if type(val) ~= 'table' then
 					db[option][opt] = val
 				else
-					for o, v in pairs(DF['unitframe']['units'][unit][option][opt]) do
+					for o, v in pairs(P['unitframe']['units'][unit][option][opt]) do
 						db[option][opt][o] = v
 					end
 				end
