@@ -337,7 +337,6 @@ function LO:CreateDataPanels()
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center, 1, 'ANCHOR_BOTTOM', 0, -4)
 	top_center_bar:Hide()
-
 end
 
 --Отображать панели
