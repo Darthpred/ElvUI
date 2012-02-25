@@ -29,6 +29,8 @@ P['general'] = {
 	
 	--misc
 	['mapTransparency'] = 0.5,
+	['minimapSize'] = 175,
+	['raidReminder'] = true,
 };
 
 --NamePlate
@@ -68,6 +70,8 @@ P['chat'] = {
 	['throttleInterval'] = 45,
 	['scrollDownInterval'] = 15,
 	['minWhisperLevel'] = 4,
+	['font'] = 'ElvUI Font',
+	['fontoutline'] = 'NONE',
 }
 
 --ClassTimers
