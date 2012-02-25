@@ -168,7 +168,7 @@ local function OnEnter(self)
 		end
 	end
 	for i =5,8 do
-		bossName, texture, isKilled, isIneligible = GetLFGDungeonEncounterInfo(dungeonId1, i);
+		bossName, texture, isKilled, isIneligible = GetLFGDungeonEncounterInfo(dungeonId2, i);
 		if ( isKilled ) then
 			GameTooltip:AddDoubleLine(bossName, BOSS_DEAD, RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b, RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
 		 elseif ( isIneligible ) then
