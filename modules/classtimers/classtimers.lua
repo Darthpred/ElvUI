@@ -522,7 +522,7 @@ function CT:GetAnchor(option, frame)
 	if option == 'PLAYERANCHOR' then
 		anchor, yOffset = self.playerFrame, 4
 	elseif option == 'PLAYERFRAME' then
-		anchor, yOffset = ElvUF_Player, 4
+		anchor, yOffset = ElvUF_Player, 3
 	elseif option == 'PLAYERBUFFS' then
 		anchor, yOffset = ElvUF_Player.Buffs, 1
 	elseif option == 'PLAYERDEBUFFS' then
