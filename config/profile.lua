@@ -61,7 +61,7 @@ P["nameplate"] = {
 
 --Auras
 P['auras'] = {
-	['perRow'] = 16,
+	['perRow'] = 20,
 }
 
 --Chat

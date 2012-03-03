@@ -31,7 +31,7 @@ function A:StyleBuffs(buttonName, index, debuff)
 		icon:Point("TOPLEFT", buff, 2, -2)
 		icon:Point("BOTTOMRIGHT", buff, -2, 2)
 		
-		buff:Size(25)
+		buff:Size(24)
 				
 		duration:ClearAllPoints()
 		duration:Point("BOTTOM", 0, -13)

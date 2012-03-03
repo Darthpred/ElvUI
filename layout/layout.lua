@@ -253,7 +253,7 @@ function LO:CreateDataPanels()
 	bottom_bar:SetFrameStrata('LOW')
 	bottom_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Top_Panel, "BOTTOMLEFT", 0, -E.mult); 
-		self:Size(685, 22);
+		self:Size(536, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Bottom_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
 	bottom_bar:Hide()
@@ -264,7 +264,7 @@ function LO:CreateDataPanels()
 	top_bar:SetFrameStrata('LOW')
 	top_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", ElvUI_Bar1, "BOTTOMLEFT", 0, -E.mult); 
-		self:Size(685, 22);
+		self:Size(536, 22);
 		E:CreateMover(self, "BottomBarMover", "Двойная панель") 
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Panel, 3, 'ANCHOR_BOTTOM', 0, -4)
@@ -278,7 +278,7 @@ function LO:CreateDataPanels()
 	map:Hide()
 	map:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Minimap, "BOTTOMLEFT", -2, -26); 
-		self:Size(211, 20)
+		self:Size(184, 20)
 		E:CreateMover(map, "MapBarMover", "Панель карты") 
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Map_Panel, 1, 'ANCHOR_BOTTOM', 0, -4)
@@ -289,7 +289,8 @@ function LO:CreateDataPanels()
 	top_left_bar:SetFrameStrata('LOW')
 	top_left_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", E.UIParent, "TOPLEFT", 0, 0); 
-		self:Size(386, 22);
+		--self:Size(386, 22);
+		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
 	top_left_bar:Hide()
@@ -300,7 +301,8 @@ function LO:CreateDataPanels()
 	top_right_bar:SetFrameStrata('LOW')
 	top_right_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", 0, 0); 
-		self:Size(386, 22);
+		--self:Size(386, 22);
+		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
 	top_right_bar:Hide()
@@ -311,7 +313,8 @@ function LO:CreateDataPanels()
 	top_center_right_bar:SetFrameStrata('LOW')
 	top_center_right_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPRIGHT", Top_Right, "TOPLEFT", -1, 0); 
-		self:Size(386, 22);
+		--self:Size(386, 22);
+		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
 	top_center_right_bar:Hide()
@@ -322,7 +325,8 @@ function LO:CreateDataPanels()
 	top_center_left_bar:SetFrameStrata('LOW')
 	top_center_left_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Top_Left, "TOPRIGHT", 1, 0); 
-		self:Size(386, 22);
+		--self:Size(386, 22);
+		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
 	top_center_left_bar:Hide()
@@ -333,7 +337,8 @@ function LO:CreateDataPanels()
 	top_center_bar:SetFrameStrata('LOW')
 	top_center_bar:SetScript('OnShow', function(self) 
 		self:Point("TOP", E.UIParent, "TOP", 0, 0); 
-		self:Size(551, 22);
+		--self:Size(351, 22);
+		self:Size((E.UIParent:GetWidth()/5) - 4, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center, 1, 'ANCHOR_BOTTOM', 0, -4)
 	top_center_bar:Hide()
