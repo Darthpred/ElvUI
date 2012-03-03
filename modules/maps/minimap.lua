@@ -133,7 +133,7 @@ function M:Minimap_UpdateSettings()
 	E.MinimapSize = E.db.general.minimapSize
 	
 	if E.db.general.raidReminder then
-		E.RBRWidth = ((E.MinimapSize - 6) / 6) + 4
+		E.RBRWidth = ((E.MinimapSize - 6) / 7) + 4
 	else
 		E.RBRWidth = 0;
 	end
@@ -183,7 +183,7 @@ function M:Minimap_UpdateSettings()
 	
 	if RaidBuffReminder then
 		RaidBuffReminder:Width(E.RBRWidth)
-		for i=1, 6 do
+		for i=1, 7 do
 			RaidBuffReminder['spell'..i]:Size(E.RBRWidth - 4)
 		end
 		
