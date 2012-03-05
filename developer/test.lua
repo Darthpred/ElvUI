@@ -1,7 +1,7 @@
 SLASH_TEST1 = "/testui"
 SlashCmdList["TEST"] = function(msg)
  if msg == "hide" then
-    for _, frames in pairs({"ElvUF_Target", "ElvUF_TargetTarget", "ElvUF_Pet", "ElvUF_Focus"}) do
+    for _, frames in pairs({"ElvUF_Target", "ElvUF_TargetTarget", "ElvUF_Pet", "ElvUF_Focus", "ElvUF_FocusTarget"}) do
         _G[frames].Hide = nil
     end
 
@@ -41,7 +41,7 @@ SlashCmdList["TEST"] = function(msg)
             end
         end
  else
-    for _, frames in pairs({"ElvUF_Target", "ElvUF_TargetTarget", "ElvUF_Pet", "ElvUF_Focus"}) do
+    for _, frames in pairs({"ElvUF_Target", "ElvUF_TargetTarget", "ElvUF_Pet", "ElvUF_Focus", "ElvUF_FocusTarget"}) do
         _G[frames].Hide = function() end
         _G[frames].unit = "player"
         _G[frames]:Show()
