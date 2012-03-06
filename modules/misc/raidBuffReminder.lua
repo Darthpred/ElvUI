@@ -1,11 +1,11 @@
-local E, L, DF = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
+﻿local E, L, DF = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 local RBR = E:NewModule('RaidBuffReminder', 'AceEvent-3.0');
 
 E.RaidBuffReminder = RBR
 
-
 localizedClass, englishClass = UnitClass("player")
 local class = englishClass
+
 
 RBR.Spell1Buffs = {
 	94160, --Flask of Flowing Water
@@ -119,6 +119,11 @@ elseif class == "MAGE" then
 elseif class == "WARLOCK" then
     RBR.Spell7Buffs = {
 	80398, --"Dark Intent"
+	}
+elseif class == "PRIEST" then
+    RBR.Spell7Buffs = {
+	73413, --Внутренняя решимость
+	588, --Внутренний огонь
 	}	
 else
     RBR.Spell7Buffs = {
