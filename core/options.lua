@@ -119,6 +119,13 @@ E.Options.args.general = {
 					get = function(info) return E.global.general.lootRoll end,
 					set = function(info, value) E.global.general.lootRoll = value; StaticPopup_Show("GLOBAL_RL") end
 				},
+				pvpautorelease = {
+					type = "toggle",
+					order = 8,
+					name = L["PvP Autorelease"],
+					desc = L['Automatically release body when killed inside a battleground.'],
+					disabled = function() return E.myclass == "SHAMAN" end,
+				},
 				autoscale = {
 					order = 8,
 					name = L["Auto Scale"],
@@ -377,6 +384,8 @@ E.Options.args.general = {
 		},	
 	},
 }
+
+
 
 local DONATOR_STRING = ""
 local LINE_BREAK = "\n"
