@@ -10,6 +10,7 @@ G['general'] = {
 	["normTex"] = "Minimalist",
 	["glossTex"] = "Minimalist",	
 	["dmgfont"] = "ElvUI Combat",
+	['bubbles'] = true,
 }
 
 G['classtimer'] = {
@@ -109,6 +110,7 @@ G['skins'] = {
 		["voidstorage"] = true,
 		["transmogrify"] = true,
 		["stable"] = true,
+		["bgmap"] = true,
 	},
 }
 
