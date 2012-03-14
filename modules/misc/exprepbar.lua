@@ -6,6 +6,19 @@ local BAR_HEIGHT = 9
 local TOPBAR_HEIGHT = ((BAR_HEIGHT + 2) * 4) + BAR_HEIGHT
 local showRepBar, showExpBar = false, false
 
+--Reputation Bar Text
+local rep = CreateFrame('Frame', 'Rep_value', E.UIParent)
+local repString = '';
+rep:SetWidth(200)
+rep:SetHeight(22)
+local reptext = rep:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+reptext:SetPoint("CENTER")
+
+rep:SetScript("OnUpdate", function(self,event,...) 
+rep:Point("CENTER", UpperReputationBar, "CENTER", 0, 0);
+rep:SetAlpha(UpperRepExpBar:GetAlpha())
+end)
+
 local function GetXP(unit)
 	if(unit == 'pet') then
 		return GetPetExperience()
@@ -13,6 +26,19 @@ local function GetXP(unit)
 		return UnitXP(unit), UnitXPMax(unit)
 	end
 end
+
+--Expirience bar text
+local xp = CreateFrame('Frame', 'XP_value', E.UIParent)
+local xpString = '';
+xp:SetWidth(200)
+xp:SetHeight(22)
+local xptext = xp:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+xptext:SetPoint("CENTER")
+
+xp:SetScript("OnUpdate", function(self,event,...) 
+xp:Point("CENTER", UpperExperienceBar, "CENTER", 0, 0);
+xp:SetAlpha(UpperRepExpBar:GetAlpha())
+end)
 
 local function OnClick()
 	if E.db['UpperRepExpBarFaded'] then
@@ -161,6 +187,9 @@ function M:UpdateExpBar(event)
 			bar.rested:SetMinMaxValues(0, 1)
 			bar.rested:SetValue(0)		
 		end
+		
+		xpString = string.join("", cur, " / ", max, " (", format("%.2f", cur/max * 100), "%) + (", E:ShortValue(GetXPExhaustion()), ")") 
+		xptext:SetText(xpString)
 	end
 	
 	M:PositionBars(self:GetNumShownBars())
@@ -199,9 +228,15 @@ function M:UpdateRepBar(event)
 	local name, reaction, min, max, value = GetWatchedFactionInfo()
 	if not name then
 		bar:Hide()
+		rep:Hide()
+		repString = ''
+		reptext:SetFormattedText(repString)
 		showRepBar = false
 	else
 		bar:Show()
+		rep:Show()
+		repString = string.join("", name, ": ", value - min, " / ", max - min)
+		reptext:SetFormattedText(repString)
 		showRepBar = true
 		
 		local color = FACTION_BAR_COLORS[reaction]
@@ -210,7 +245,7 @@ function M:UpdateRepBar(event)
 		bar:SetMinMaxValues(min, max)
 		bar:SetValue(value)		
 	end
-		
+
 	M:PositionBars(self:GetNumShownBars())
 end
 
