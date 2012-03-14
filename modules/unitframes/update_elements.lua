@@ -729,6 +729,12 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 			end				
 		end		
 	end
+	
+eclipseBar:SetScript("OnUpdate", function(self,event,...) 
+	local spower = UnitPower( PlayerFrame.unit, SPELL_POWER_ECLIPSE );
+	eclipseBar.powtext:SetText(spower)
+end)
+	
 end
 
 function UF:DruidPostUpdateAltPower(unit, min, max)

@@ -335,6 +335,10 @@ function UF:Construct_DruidResourceBar(frame)
 	UF['fontstrings'][eclipseBar.Text] = true
 	eclipseBar.Text:SetPoint("CENTER", lunarBar:GetStatusBarTexture(), "RIGHT")
 	
+	eclipseBar.powtext = lunarBar:CreateFontString(nil, 'OVERLAY')
+	UF['fontstrings'][eclipseBar.powtext] = true
+	eclipseBar.powtext:SetPoint("CENTER", eclipseBar, "CENTER")
+	
 	return eclipseBar
 end
 
