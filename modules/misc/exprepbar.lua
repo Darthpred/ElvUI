@@ -146,7 +146,7 @@ function M:UpdateExpBar(event)
 	local bar = UpperExperienceBar
 	if not bar then
 		bar = CreateFrame('StatusBar', 'UpperExperienceBar', UpperRepExpBar)
-		bar:Size(BAR_WIDTH + 20, BAR_HEIGHT)
+		bar:Size(BAR_WIDTH + E.RBRWidth, BAR_HEIGHT)
 		bar:CreateBackdrop('Default')
 		bar:SetStatusBarTexture(E.media.normTex)
 		bar:SetFrameLevel(UpperRepExpBar:GetFrameLevel() + 3)
@@ -222,7 +222,7 @@ function M:UpdateRepBar(event)
 	local bar = UpperReputationBar
 	if not bar then
 		bar = CreateFrame('StatusBar', 'UpperReputationBar', UpperRepExpBar)
-		bar:Size(BAR_WIDTH + 20, BAR_HEIGHT)
+		bar:Size(BAR_WIDTH + E.RBRWidth, BAR_HEIGHT)
 		bar:CreateBackdrop('Default')
 		bar:SetStatusBarTexture(E.media.normTex)
 		bar:SetFrameLevel(UpperRepExpBar:GetFrameLevel() + 3)

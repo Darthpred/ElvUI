@@ -108,6 +108,7 @@ G['skins'] = {
 		["encounterjournal"] = true,
 		["voidstorage"] = true,
 		["transmogrify"] = true,
+		["stable"] = true,
 	},
 }
 
