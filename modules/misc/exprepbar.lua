@@ -188,7 +188,14 @@ function M:UpdateExpBar(event)
 			bar.rested:SetValue(0)		
 		end
 		
-		xpString = string.join("", cur, " / ", max, " (", format("%.2f", cur/max * 100), "%) + (", E:ShortValue(GetXPExhaustion()), ")") 
+		local rested = GetXPExhaustion()
+		local xprest
+		if rested then
+			xprest = E:ShortValue(rested)
+		else
+			xprest = 0
+		end
+		xpString = string.join("", cur, " / ", max, " (", format("%.2f", cur/max * 100), "%) + (", xprest, ")") 
 		xptext:SetText(xpString)
 	end
 	
