@@ -1,10 +1,22 @@
 [b]Additions[/b]
+*Add new option to skin the Blizzard Chat Bubbles. ->(General Settings)
 *Add skin for the Blizzard Stable Frame. (Credit: Tomkuzyno)
 *Add skin the the Blizzard BG-Map.
 *Add Auctionator skin. (Credit: Tomkuzyno)
 *Add Clique Skin. (Credit: Nidra)
 *Minimap icons should now be skinned to match ElvUI. (Credit: Tomkuzyno)
 *Add skin for Addon Control Panel (Credit: Camealion)
+*Add an option under the skada skin section of the config to control the bar height of the individual bars.
+*Add skin for the Blizzard Guild Invite Frame.
+*Add a button to the right click menu of someones name in chat. This allows you to copy that specific line of chat of the person you right clicked.
+
+[b]General Changes[/b]
+*The World Map Alpha setting should properly change Opacity, it was working the opposite of how it was intended before. 100% Opacity means the frame is fully faded away now.
+*Add currency information to the bags datatext tooltip.
+*UIScale must be changed by at least 1% in order to recieve a UIScale popup warning to reload.
+*Chat Timestamps should now all have brackets around them, and be colored gray.
 
 [b]Fixes[/b]
 *The Reputation bar should have its width correctly set on login.
+*Using the keybind mode on a bar that is set to mouseover should properly retain its visibility state.
+*The Main Assist frame should no longer re-attach itself to the Main Tank frame after the PLAYER_ENTERING_WORLD event fires, or logging into the game.

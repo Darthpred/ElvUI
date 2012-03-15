@@ -721,3 +721,6 @@ L['Stable'] = true;
 L['Chat Bubbles'] = true;
 L['Skin the blizzard chat bubbles.'] = true;
 L["BG Map"] = true;
+L['Embedded Bar Height'] = true;
+L['The height of the bars while skada is embedded.'] = true;
+L["Copy Text"] = true;
