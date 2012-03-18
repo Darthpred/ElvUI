@@ -258,7 +258,9 @@ function M:Initialize()
 	Minimap:ClearAllPoints()
 	Minimap:Point("TOPLEFT", mmholder, "TOPLEFT", 2, -2)
 	Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
+	Minimap:CreateBackdrop('Default')
 	Minimap:SetFrameStrata('LOW');
+	
 	Minimap:HookScript('OnEnter', function(self)
 		self.location:Show()
 	end)
