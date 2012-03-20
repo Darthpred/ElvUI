@@ -237,8 +237,11 @@ function M:IsMinimapButton(f)
 		local region = select(i, f:GetRegions())
 		if region:GetObjectType() == 'Texture' then
 			local tex = region:GetTexture()
-			if tex and tex:find('TrackingBorder') then
-				return true
+			if tex then
+				tex = string.lower(tex)
+				if tex:find('trackingborder') or tex:find('minimap') then
+					return true
+				end
 			end
 		end
 	end
@@ -257,6 +260,7 @@ end
 function M:Initialize()	
 	self:ScheduleRepeatingTimer('CheckForNewMinimapButtons', 15)
 	self:CheckForNewMinimapButtons() --Initial check
+	self:RegisterEvent('ADDON_LOADED', 'CheckForNewMinimapButtons') --Gotta catch em all
 	
 	local mmholder = CreateFrame('Frame', 'MMHolder', Minimap)
 	mmholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
