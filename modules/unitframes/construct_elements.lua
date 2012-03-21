@@ -586,3 +586,12 @@ function UF:Construct_HealComm(frame)
 		end
 	}
 end
+
+function UF:Construct_Talents(frame)
+    local Talents = frame:CreateFontString(nil, 'OVERLAY')
+    Talents:SetTextColor(1,1,1,.7)
+    Talents:FontTemplate(nil, 12, 'OUTLINE')
+    Talents:SetPoint('TOPRIGHT', frame.Health, 0, 8)
+
+    return Talents
+end

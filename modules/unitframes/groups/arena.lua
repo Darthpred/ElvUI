@@ -23,6 +23,8 @@ function UF:Construct_ArenaFrames(frame)
 	frame.Trinket = self:Construct_Trinket(frame)
 	
 	frame:SetAttribute("type2", "focus")
+	
+	frame.Talents = self:Construct_Talents(frame)
 end
 
 function UF:Update_ArenaFrames(frame, db)
