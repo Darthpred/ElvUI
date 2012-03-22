@@ -116,7 +116,8 @@ E.Options.args.general = {
 					order = 8,
 					name = L["PvP Autorelease"],
 					desc = L['Automatically release body when killed inside a battleground.'],
-					disabled = function() return E.myclass == "SHAMAN" end,
+					get = function(info) return E.db.general.pvpautorelease end,
+					set = function(info, value) E.db.general.pvpautorelease = value; StaticPopup_Show("CONFIG_RL") end
 				},
 				autoscale = {
 					order = 7,
