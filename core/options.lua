@@ -124,7 +124,8 @@ E.Options.args.general = {
 					name = L["Auto Scale"],
 					desc = L["Automatically scale the User Interface based on your screen resolution"],
 					type = "toggle",	
-					set = function(info, value) E.db.general[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL") end
+					get = function(info) return E.db.general.pvpautorelease end,
+					set = function(info, value) E.db.general.pvpautorelease = value; StaticPopup_Show("CONFIG_RL") end
 				},	
 				raidReminder = {
 					order = 8,
