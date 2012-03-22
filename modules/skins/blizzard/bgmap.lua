@@ -56,9 +56,9 @@ local function LoadSkin()
 		BattlefieldMinimap_UpdateOpacity(0)
 	end)
 	
-	BattlefieldMinimap:HookScript('OnLeave', function()
+	--[[BattlefieldMinimap:HookScript('OnLeave', function()
 		BattlefieldMinimap_UpdateOpacity(OpacityFrameSlider:GetValue())
-	end)
+	end)]]
 	
 	BattlefieldMinimapCloseButton:HookScript('OnEnter', function()
 		BattlefieldMinimap_UpdateOpacity(0)
