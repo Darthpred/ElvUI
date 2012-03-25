@@ -14,11 +14,6 @@ rep:SetHeight(22)
 local reptext = rep:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 reptext:SetPoint("CENTER")
 
-rep:SetScript("OnUpdate", function(self,event,...) 
-rep:Point("CENTER", UpperReputationBar, "CENTER", 0, 0);
-rep:SetAlpha(UpperRepExpBar:GetAlpha())
-end)
-
 local function GetXP(unit)
 	if(unit == 'pet') then
 		return GetPetExperience()
@@ -281,6 +276,11 @@ function M:UpdateExpRepBarAnchor()
 	
 	self:PositionBars(self:GetNumShownBars())
 end
+
+rep:SetScript("OnUpdate", function(self,event,...) 
+rep:Point("CENTER", UpperReputationBar, "CENTER", 0, 0);
+rep:SetAlpha(UpperRepExpBar:GetAlpha())
+end)
 
 function M:LoadExpRepBar()
 	local holder = CreateFrame('Button', 'UpperRepExpBarHolder', E.UIParent)
