@@ -31,6 +31,7 @@ P['general'] = {
 	['expRepPos'] = 'TOP_SCREEN',
 	
 	--misc
+	['pvpautorelease'] = true,
 	['mapTransparency'] = 1,
 	['minimapSize'] = 176,
 	['raidReminder'] = true,
