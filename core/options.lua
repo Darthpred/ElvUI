@@ -95,8 +95,14 @@ E.Options.args.general = {
 					desc = L['Automatically accept invites from guild/friends.'],
 					type = 'toggle',
 				},
-				loot = {
+				vendorGrays = {
 					order = 5,
+					name = L['Vendor Grays'],
+					desc = L['Automatically vendor gray items when visiting a vendor.'],
+					type = 'toggle',				
+				},				
+				loot = {
+					order = 6,
 					type = "toggle",
 					name = L['Loot'],
 					desc = L['Enable/Disable the loot frame.'],
@@ -104,7 +110,7 @@ E.Options.args.general = {
 					set = function(info, value) E.global.general.loot = value; StaticPopup_Show("GLOBAL_RL") end
 				},
 				lootRoll = {
-					order = 6,
+					order = 7,
 					type = "toggle",
 					name = L['Loot Roll'],
 					desc = L['Enable/Disable the loot roll frame.'],
@@ -118,7 +124,7 @@ E.Options.args.general = {
 					desc = L['Automatically release body when killed inside a battleground.'],
 					get = function(info) return E.db.general.pvpautorelease end,
 					set = function(info, value) E.db.general.pvpautorelease = value; StaticPopup_Show("CONFIG_RL") end
- },
+				},
 				autoscale = {
 					order = 8,
 					name = L["Auto Scale"],
