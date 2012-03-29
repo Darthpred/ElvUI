@@ -288,7 +288,7 @@ function LO:CreateDataPanels()
 	top_bar:SetTemplate('Default', true)
 	top_bar:SetFrameStrata('LOW')
 	top_bar:SetScript('OnShow', function(self) 
-		self:Point("BOTTOM", E.UIParent, "BOTTOM", 0, 44); 
+		self:Point("BOTTOM", E.UIParent, "BOTTOM", 0, 22); 
 		self:Size(536, 22);
 		E:CreateMover(self, "BottomBarMover", "Двойная панель") 
 	end)
@@ -314,7 +314,6 @@ function LO:CreateDataPanels()
 	top_left_bar:SetFrameStrata('LOW')
 	top_left_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", E.UIParent, "TOPLEFT", 0, 0); 
-		--self:Size(386, 22);
 		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
@@ -326,7 +325,6 @@ function LO:CreateDataPanels()
 	top_right_bar:SetFrameStrata('LOW')
 	top_right_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", 0, 0); 
-		--self:Size(386, 22);
 		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
@@ -338,7 +336,6 @@ function LO:CreateDataPanels()
 	top_center_right_bar:SetFrameStrata('LOW')
 	top_center_right_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPRIGHT", Top_Right, "TOPLEFT", -1, 0); 
-		--self:Size(386, 22);
 		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
@@ -350,7 +347,6 @@ function LO:CreateDataPanels()
 	top_center_left_bar:SetFrameStrata('LOW')
 	top_center_left_bar:SetScript('OnShow', function(self) 
 		self:Point("TOPLEFT", Top_Left, "TOPRIGHT", 1, 0); 
-		--self:Size(386, 22);
 		self:Size(E.UIParent:GetWidth()/5, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
@@ -362,7 +358,6 @@ function LO:CreateDataPanels()
 	top_center_bar:SetFrameStrata('LOW')
 	top_center_bar:SetScript('OnShow', function(self) 
 		self:Point("TOP", E.UIParent, "TOP", 0, 0); 
-		--self:Size(351, 22);
 		self:Size((E.UIParent:GetWidth()/5) - 4, 20);
 	end)
 	E:GetModule('DataTexts'):RegisterPanel(Top_Center, 1, 'ANCHOR_BOTTOM', 0, -4)
