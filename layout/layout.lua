@@ -288,7 +288,7 @@ function LO:CreateDataPanels()
 	top_bar:SetTemplate('Default', true)
 	top_bar:SetFrameStrata('LOW')
 	top_bar:SetScript('OnShow', function(self) 
-		self:Point("BOTTOM", E.UIParent, "BOTTOM", 0, 22); 
+		self:Point("BOTTOM", E.UIParent, "BOTTOM", 0, 23); 
 		self:Size(536, 22);
 		E:CreateMover(self, "BottomBarMover", "Двойная панель") 
 	end)
