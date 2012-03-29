@@ -793,3 +793,4 @@ L["Your current resolution is %s, this is considered a %s resolution."] = "Ва�
 L["Your items have been repaired for: "] = "Ваши предметы отремонтированы на: "
 L["Your items have been repaired using guild bank funds for: "] = "Ваши предметы отремонтированы за счет гильдии на: "
 L["Your version of ElvUI is out of date. You can download the latest version from www.curse.com"] = "Ваша версия ElvUI устарела. Вы можете скачать последнюю версию на www.curse.com"
+L["Automatically vendor gray items when visiting a vendor."] = "Автоматически продавать серые предметы при посещении торговца."
