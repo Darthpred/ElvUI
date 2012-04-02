@@ -38,11 +38,11 @@ function AB:UpdatePet()
 			end			
 		end		
 		
-		if autoCastAllowed then
-			autoCast:Show();
-		else
+		--if autoCastAllowed then
+		--	autoCast:Show();
+		--else
 			autoCast:Hide();
-		end		
+		--end	
 		
 		if autoCastEnabled then
 			AutoCastShine_AutoCastStart(shine);
