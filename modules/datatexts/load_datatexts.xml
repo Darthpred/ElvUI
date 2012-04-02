@@ -22,6 +22,5 @@
 	<Script file='attackpower.lua'/>
 	<Script file='spellpower.lua'/>
 	<Script file='version.lua'/>
-	<Script file='range.lua'/>
 	<Script file='options.lua'/>
 </Ui>
