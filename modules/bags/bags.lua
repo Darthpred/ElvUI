@@ -528,9 +528,9 @@ function B:CreateBagFrame(type)
 	f:SetFrameStrata("DIALOG")
 
 	if type == 'Bags' then
-		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 2, E.db.general.panelHeight - 21)
+		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 2, E.db.general.panelHeight + 2)
 	else
-		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -2, E.db.general.panelHeight - 21)
+		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -2, E.db.general.panelHeight + 2)
 		
 	--[[	self.bagsFrame = f
 	else
