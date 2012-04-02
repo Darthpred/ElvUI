@@ -128,22 +128,22 @@ P['datatexts'] = {
 	['panels'] = {
 		['LeftChatDataPanel'] = {
 			['left'] = 'Призыв к оружию',
-			['middle'] = 'Меткость',
-			['right'] = 'Искусность',
+			['middle'] = 'Прочность',
+			['right'] = 'Друзья',
 		},
 		['RightChatDataPanel'] = {
-			['left'] = 'Сила заклинаний',
-			['middle'] = 'Скорость',	
-			['right'] = 'Крит',
+			['left'] = 'Меткость',
+			['middle'] = 'Искусность',	
+			['right'] = 'Таланты',
 		},
-		['Bottom_Panel'] = {
-		['left'] = 'Золото',
-		['middle'] = 'Сумки',
-		['right'] = 'Прочность',
+		['Bottom_Right'] = {
+		['left'] = 'Сила заклинаний',
+		['middle'] = 'Скорость',
+		['right'] = 'Крит',
 		},
-		['Top_Panel'] = {
-		['left'] = 'Друзья',
-		['middle'] = 'Система',
+		['Bottom_Left'] = {
+		['left'] = 'Сумки',
+		['middle'] = 'Золото',
 		['right'] = 'Броня',
 		},	
 		['Top_Left'] = {
@@ -152,27 +152,27 @@ P['datatexts'] = {
 		['right'] = 'MrtWoo',
 		},	
 		['Top_Right'] = {
-		['left'] = 'WIM',
-		['middle'] = 'TellMeWhen',
-		['right'] = 'DBM-LDB',
+		['left'] = '',
+		['middle'] = '',
+		['right'] = '',
 		},	
 		['Top_Center_Left'] = {
 		['left'] = 'Altoholic',
-		['middle'] = '',
+		['middle'] = 'TellMeWhen',
 		['right'] = 'AtlasLoot',
 		},
 		['Top_Center_Right'] = {
 		['left'] = 'Notes',
-		['middle'] = '',
-		['right'] = 'Broker_LunarSphere',
+		['middle'] = 'DBM-LDB',
+		['right'] = 'WIM',
 		},
 		['LeftMiniPanel'] = 'Время',
 		['RightMiniPanel'] = 'Гильдия',
-		['Map_Panel'] = 'Таланты',
+		['Bottom_Panel'] = 'Система',
 		['Top_Center'] = 'Сборка',
 	},
 	['localtime'] = true,
-	['time24'] = false,
+	['time24'] = true,
 }
 
 --Tooltip

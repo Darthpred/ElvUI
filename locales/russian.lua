@@ -2,14 +2,14 @@
 local L = AceLocale:NewLocale("ElvUI", "ruRU")
 if not L then return; end
 
-L["Bottom_Panel"] = "Нижняя двойная панель"
-L["Top_Panel"] = "Верхняя двойная панель"
-L["Map_Panel"] = "Панель карты"
-L["Top_Center"] = "В-Центр"
-L["Top_Center_Left"] = "В-Центр слева"
-L["Top_Center_Right"] = "В-Центр справа"
-L["Top_Left"] = "В-Левая"
-L["Top_Right"] = "В-Правая"
+L["Bottom_Right"] = "Нижняя правая панель"
+L["Bottom_Left"] = "Нижняя левая панель"
+L["Bottom_Panel"] = "Нижняя центральная панель"
+L["Top_Center"] = "Верхняя центральная панель"
+L["Top_Center_Left"] = "Верхняя центр слева"
+L["Top_Center_Right"] = "Верхняя центр справа"
+L["Top_Left"] = "Верхняя левая панель"
+L["Top_Right"] = "Верхняя правая панель"
 
 L["PvP Autorelease"] = "Автовыход из тела"
 L['Automatically release body when killed inside a battleground.'] = "Автоматически выходить из тела на полях боя."
