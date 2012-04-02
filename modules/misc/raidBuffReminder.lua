@@ -102,6 +102,8 @@ RBR.MeleeSpell6Buffs = {
 if class == "PALADIN" then
 	RBR.Spell7Buffs = {
 	20165, --"Seal of Insight"
+	20154, --"Seal of Reckoning"
+	20164, --"Seal of Justice"
 	31801, --"Seal of Truth"
 	}
 elseif class == "DEATHKNIGHT" then
