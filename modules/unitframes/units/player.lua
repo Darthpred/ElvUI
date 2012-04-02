@@ -775,16 +775,30 @@ function UF:Update_PlayerFrame(frame, db)
 			if not frame:IsElementEnabled('HealPrediction') then
 				frame:EnableElement('HealPrediction')
 			end
-
+			
+			if USE_PORTRAIT_OVERLAY then
+			
 			healPrediction.myBar:ClearAllPoints()
 			healPrediction.myBar:Width(db.width - (BORDER*2))
 			healPrediction.myBar:SetPoint('BOTTOMLEFT', frame.Health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')	
-
+			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')
+			healPrediction.myBar:SetAllPoints(frame.Portrait)
+			
 			healPrediction.otherBar:ClearAllPoints()
 			healPrediction.otherBar:SetPoint('TOPLEFT', healPrediction.myBar:GetStatusBarTexture(), 'TOPRIGHT')	
 			healPrediction.otherBar:SetPoint('BOTTOMLEFT', healPrediction.myBar:GetStatusBarTexture(), 'BOTTOMRIGHT')	
 			healPrediction.otherBar:Width(db.width - (BORDER*2))
+			else
+			healPrediction.myBar:ClearAllPoints()
+			healPrediction.myBar:Width(db.width - (BORDER*2))
+			healPrediction.myBar:SetPoint('BOTTOMLEFT', frame.Health:GetStatusBarTexture(), 'BOTTOMRIGHT')
+			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')	
+			
+			healPrediction.otherBar:ClearAllPoints()
+			healPrediction.otherBar:SetPoint('TOPLEFT', healPrediction.myBar:GetStatusBarTexture(), 'TOPRIGHT')	
+			healPrediction.otherBar:SetPoint('BOTTOMLEFT', healPrediction.myBar:GetStatusBarTexture(), 'BOTTOMRIGHT')	
+			healPrediction.otherBar:Width(db.width - (BORDER*2))
+			end
 		else
 			if frame:IsElementEnabled('HealPrediction') then
 				frame:DisableElement('HealPrediction')
