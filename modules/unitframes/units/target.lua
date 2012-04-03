@@ -177,7 +177,7 @@ function UF:Update_TargetFrame(frame, db)
 				
 				local x, y = self:GetPositionOffset(db.power.position)
 				power.value:ClearAllPoints()
-				power.value:Point(db.power.position, frame.Power, db.power.position, x, y)			
+				power.value:Point(db.power.position, frame.Health, db.power.position, x, y)			
 			else
 				power.value:Hide()
 			end
@@ -297,7 +297,7 @@ function UF:Update_TargetFrame(frame, db)
 		local x, y = self:GetAuraOffset(db.buffs.initialAnchor, db.buffs.anchorPoint)
 		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo)
 
-		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, 3)
+		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, y)
 		buffs:Height(buffs.size * rows)
 		buffs.initialAnchor = db.buffs.initialAnchor
 		buffs["growth-y"] = db.buffs['growth-y']
@@ -459,29 +459,23 @@ function UF:Update_TargetFrame(frame, db)
 				frame:EnableElement('HealPrediction')
 			end
 
-			if USE_PORTRAIT_OVERLAY then
-			
-			healPrediction.myBar:ClearAllPoints()
-			healPrediction.myBar:Width(db.width - (BORDER*2))
-			healPrediction.myBar:SetPoint('BOTTOMLEFT', frame.Health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')
-			healPrediction.myBar:SetAllPoints(frame.Portrait)
-			
-			healPrediction.otherBar:ClearAllPoints()
-			healPrediction.otherBar:SetPoint('TOPLEFT', healPrediction.myBar:GetStatusBarTexture(), 'TOPRIGHT')	
-			healPrediction.otherBar:SetPoint('BOTTOMLEFT', healPrediction.myBar:GetStatusBarTexture(), 'BOTTOMRIGHT')	
-			healPrediction.otherBar:Width(db.width - (BORDER*2))
-			else
 			healPrediction.myBar:ClearAllPoints()
 			healPrediction.myBar:Width(db.width - (BORDER*2))
 			healPrediction.myBar:SetPoint('BOTTOMLEFT', frame.Health:GetStatusBarTexture(), 'BOTTOMRIGHT')
 			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')	
-			
+
 			healPrediction.otherBar:ClearAllPoints()
 			healPrediction.otherBar:SetPoint('TOPLEFT', healPrediction.myBar:GetStatusBarTexture(), 'TOPRIGHT')	
 			healPrediction.otherBar:SetPoint('BOTTOMLEFT', healPrediction.myBar:GetStatusBarTexture(), 'BOTTOMRIGHT')	
 			healPrediction.otherBar:Width(db.width - (BORDER*2))
-			end
+			
+			if not USE_PORTRAIT_OVERLAY then
+				healPrediction.myBar:SetParent(frame)
+				healPrediction.otherBar:SetParent(frame)
+			else	
+				healPrediction.myBar:SetParent(frame.Portrait.overlay)		
+				healPrediction.otherBar:SetParent(frame.Portrait.overlay)					
+			end			
 		else
 			if frame:IsElementEnabled('HealPrediction') then
 				frame:DisableElement('HealPrediction')
