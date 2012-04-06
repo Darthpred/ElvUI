@@ -136,7 +136,7 @@ function RU:Initialize()
 	end)
 
 	--Close Button
-	self:CreateUtilButton("CloseButton", RaidUtilityPanel, "UIMenuButtonStretchTemplate, SecureHandlerClickTemplate", 135, 18, "TOP", RaidUtilityPanel, "BOTTOM", 0, -1, CLOSE, nil)
+	self:CreateUtilButton("CloseButton", RaidUtilityPanel, "UIMenuButtonStretchTemplate, SecureHandlerClickTemplate", 136, 18, "TOP", RaidUtilityPanel, "BOTTOM", 0, -1, CLOSE, nil)
 	CloseButton:SetFrameRef("ShowButton", ShowButton)
 	CloseButton:SetAttribute("_onclick", [=[self:GetParent():Hide(); self:GetFrameRef("ShowButton"):Show();]=])
 	CloseButton:SetScript("OnMouseUp", function(self) RaidUtilityPanel.toggled = false end)
