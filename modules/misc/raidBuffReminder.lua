@@ -126,6 +126,11 @@ elseif class == "PRIEST" then
     RBR.Spell7Buffs = {
 	73413, --Внутренняя решимость
 	588, --Внутренний огонь
+	}
+elseif class == "HUNTER" then
+    RBR.Spell7Buffs = {
+	82661, --Лиса
+	13165, --Ястреб
 	}	
 else
     RBR.Spell7Buffs = {
