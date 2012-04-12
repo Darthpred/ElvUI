@@ -71,6 +71,9 @@ G['skins'] = {
 	['clique'] = {
         ['enable'] = true,
     },
+	['notes'] = {
+        ['enable'] = true,
+    },
 	['blizzard'] = {
 		['enable'] = true,
 		["bags"] = true,
