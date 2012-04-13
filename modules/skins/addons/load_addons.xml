@@ -12,4 +12,6 @@
 	<Script file='tinydps.lua'/>
 	<Script file='postal.lua'/>
 	<Script file='notes.lua'/>
+	<Script file='tdb.lua'/>
+	<Script file='tellmewhen.lua'/>
 </Ui>
