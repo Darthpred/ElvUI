@@ -159,8 +159,10 @@ local function LoadSkin()
 
 		-- Button Positions
 		AuctionatorCloseButton:ClearAllPoints()
+		Atr_Back_Button:ClearAllPoints()
 		AuctionatorCloseButton:Point("BOTTOMLEFT", Atr_Main_Panel, "BOTTOMRIGHT", -17, 10)
 		Atr_Buy1_Button:Point("RIGHT", AuctionatorCloseButton, "LEFT", -5, 0)
+		Atr_Back_Button:Point("TOP", Atr_RecommendItem_Tex, "BOTTOM", -2, -20)
 		Atr_CancelSelectionButton:Point("RIGHT", Atr_Buy1_Button, "LEFT", -5, 0)
 		Atr_SellControls_Tex:StripTextures()
 		Atr_SellControls_Tex:StyleButton()
