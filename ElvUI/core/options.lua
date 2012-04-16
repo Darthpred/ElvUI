@@ -117,6 +117,14 @@ E.Options.args.general = {
 					get = function(info) return E.global.general.lootRoll end,
 					set = function(info, value) E.global.general.lootRoll = value; StaticPopup_Show("GLOBAL_RL") end
 				},
+				pvpautorelease = {
+					order = 7,
+					type = "toggle",
+					name = L['PvP Autorelease'],
+					desc = L['Automatically release body when killed inside a battleground.'],
+					get = function(info) return E.db.general.pvpautorelease end,
+					set = function(info, value) E.db.general.pvpautorelease = value; StaticPopup_Show("CONFIG_RL") end
+				},
 				autoscale = {
 					order = 8,
 					name = L["Auto Scale"],
@@ -162,7 +170,7 @@ E.Options.args.general = {
 					set = function(info, value) E.global.general.profileBinds = value; StaticPopup_Show("GLOBAL_RL") end
 				},]]
 				bubbles = {
-					order = 12,
+					order = 13,
 					type = "toggle",
 					name = L['Chat Bubbles'],
 					desc = L['Skin the blizzard chat bubbles.'],
@@ -440,7 +448,7 @@ E.Options.args.credits = {
 		text = {
 			order = 1,
 			type = "description",
-			name = L['ELVUI_CREDITS']..'\n\n'..L['Coding:']..'\nTukz\nHaste\nNightcracker\nOmega1970\nHydrazine\n\n'..L['Testing:']..'\nTukui Community\nAffinity\nModarch\nBladesdruid\nTirain\nPhima\nVeiled (www.howtopriest.com)\n\n'..L['Donations:']..DONATOR_STRING,
+			name = L['ELVUI_CREDITS']..'\n\n'..L['Coding:']..'\nTukz\nHaste\nNightcracker\nOmega1970\nHydrazine\nRepooc\nLombra\n'..L['Testing:']..'\nTukui Community\nAffinity\nModarch\nBladesdruid\nTirain\nPhima\nVeiled (www.howtopriest.com)\n\n'..L['Donations:']..DONATOR_STRING,
 		},
 	},
 }

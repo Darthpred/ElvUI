@@ -5,11 +5,7 @@ E.Misc = M;
 local UIErrorsFrame = UIErrorsFrame;
 
 function M:ErrorFrameToggle(event)
-	if event == 'PLAYER_REGEN_DISABLED' then
-		UIErrorsFrame:UnregisterEvent('UI_ERROR_MESSAGE')
-	else
-		UIErrorsFrame:RegisterEvent('UI_ERROR_MESSAGE')
-	end
+	UIErrorsFrame:RegisterEvent('UI_ERROR_MESSAGE')
 end
 
 function M:COMBAT_LOG_EVENT_UNFILTERED(_, _, event, _, sourceGUID, _, _, _, _, destName, _, _, _, _, _, spellID, spellName)
@@ -174,6 +170,7 @@ function M:Initialize()
 	self:LoadLoot()
 	self:LoadLootRoll()
 	self:LoadChatBubbles()
+	self:LoadAutoRelease()
 	self:RegisterEvent('MERCHANT_SHOW')
 	self:RegisterEvent('PLAYER_REGEN_DISABLED', 'ErrorFrameToggle')
 	self:RegisterEvent('PLAYER_REGEN_ENABLED', 'ErrorFrameToggle')

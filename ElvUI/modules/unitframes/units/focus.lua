@@ -132,7 +132,7 @@ function UF:Update_FocusFrame(frame, db)
 				
 				local x, y = self:GetPositionOffset(db.power.position)
 				power.value:ClearAllPoints()
-				power.value:Point(db.power.position, frame.Health, db.power.position, x, y)			
+				power.value:Point(db.power.position, frame.Power, db.power.position, x, y)			
 			else
 				power.value:Hide()
 			end

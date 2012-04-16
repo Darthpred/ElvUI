@@ -490,7 +490,8 @@ function UF:Update_Raid2640Frames(frame, db)
 	UF:UpdateAuraWatch(frame)
 	if not frame:IsElementEnabled('ReadyCheck') then
 		frame:EnableElement('ReadyCheck')
-	end		
+	end	
+	
 	frame:UpdateAllElements()
 end
 

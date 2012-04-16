@@ -142,7 +142,7 @@ function M:UpdateSettings()
 	E.MinimapSize = E.db.general.minimapSize
 	
 	if E.db.general.raidReminder then
-		E.RBRWidth = ((E.MinimapSize - 6) / 6) + 4
+		E.RBRWidth = ((E.MinimapSize - 6) / 7) + 4
 	else
 		E.RBRWidth = 0;
 	end
@@ -192,7 +192,7 @@ function M:UpdateSettings()
 	
 	if RaidBuffReminder then
 		RaidBuffReminder:Width(E.RBRWidth)
-		for i=1, 6 do
+		for i=1, 7 do
 			RaidBuffReminder['spell'..i]:Size(E.RBRWidth - 4)
 		end
 		
@@ -209,11 +209,13 @@ function M:Initialize()
 	mmholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
 	mmholder:Width((Minimap:GetWidth() + 29) + E.RBRWidth)
 	mmholder:Height(Minimap:GetHeight() + 53)
-	
+		
 	Minimap:ClearAllPoints()
 	Minimap:Point("TOPLEFT", mmholder, "TOPLEFT", 2, -2)
 	Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
 	Minimap:CreateBackdrop('Default')
+	Minimap:SetFrameStrata('LOW');
+	
 	Minimap:HookScript('OnEnter', function(self)
 		self.location:Show()
 	end)
@@ -344,7 +346,6 @@ function M:Initialize()
 			LibStub('AceAddon-3.0'):GetAddon('GatherMate2'):GetModule('Display'):ReparentMinimapPins(Minimap)
 		end	
 	end)
-
 	
 	UIParent:HookScript('OnShow', function()
 		FarmModeMap:Hide()

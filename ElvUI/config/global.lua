@@ -67,7 +67,13 @@ G['skins'] = {
 	},		
 	['tinydps'] = {
 		['enable'] = true,
-	},			
+	},	
+	['clique'] = {
+        ['enable'] = true,
+    },
+	['notes'] = {
+        ['enable'] = true,
+    },
 	['blizzard'] = {
 		['enable'] = true,
 		["bags"] = true,

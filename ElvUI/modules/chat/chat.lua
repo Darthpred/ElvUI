@@ -292,7 +292,7 @@ function CH:PositionChat(override)
 			if id ~= 2 and not (id > NUM_CHAT_WINDOWS) then
 				chat:ClearAllPoints()
 				chat:Point("BOTTOMLEFT", LeftChatToggleButton, "TOPLEFT", 1, 3)
-				chat:Size(E.db.general.panelWidth - 11, (E.db.general.panelHeight - 60))
+				chat:Size(E.db.general.panelWidth - 6, (E.db.general.panelHeight - 27))
 				FCF_SavePositionAndDimensions(chat)		
 			end
 			chat:SetParent(LeftChatPanel)

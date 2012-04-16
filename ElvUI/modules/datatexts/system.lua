@@ -194,5 +194,4 @@ end
 	onEnterFunc - function to fire OnEnter
 	onLeaveFunc - function to fire OnLeave, if not provided one will be set for you that hides the tooltip.
 ]]
-DT:RegisterDatatext('System', nil, nil, Update, Click, OnEnter, OnLeave)
-
+DT:RegisterDatatext("Система", nil, nil, Update, Click, OnEnter, OnLeave)

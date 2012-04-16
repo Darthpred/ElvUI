@@ -15,7 +15,7 @@ end
 local function LoadSkin()
 	if E.global.skins.skada.enable ~= true then return end
 	local Skada = Skada
-	local barSpacing = 1
+	local barSpacing = 0
 	local borderWidth = 1
 	local barmod = Skada.displays["bar"]
 
@@ -55,9 +55,9 @@ local function LoadSkin()
 
 		win.bargroup.button:SetBackdropColor(unpack(E["media"].backdropcolor))
 
-		skada:SetBackdrop(nil)
+		--[[skada:SetBackdrop(nil)
 		if not skada.backdrop then
-			skada:CreateBackdrop('Default')
+			skada:CreateBackdrop('Transparent')
 		end
 		skada.backdrop:ClearAllPoints()
 		if win.db.enabletitle then
@@ -65,7 +65,7 @@ local function LoadSkin()
 		else
 			skada.backdrop:Point('TOPLEFT', win.bargroup, 'TOPLEFT', -2, 2)
 		end
-		skada.backdrop:Point('BOTTOMRIGHT', win.bargroup, 'BOTTOMRIGHT', 2, -2)
+		skada.backdrop:Point('BOTTOMRIGHT', win.bargroup, 'BOTTOMRIGHT', 2, -2)]]
 	end	
 	
 	-- Update pre-existing displays

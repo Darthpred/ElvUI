@@ -335,6 +335,10 @@ function UF:Construct_DruidResourceBar(frame)
 	UF['fontstrings'][eclipseBar.Text] = true
 	eclipseBar.Text:SetPoint("CENTER", lunarBar:GetStatusBarTexture(), "RIGHT")
 	
+	eclipseBar.powtext = lunarBar:CreateFontString(nil, 'OVERLAY')
+	UF['fontstrings'][eclipseBar.powtext] = true
+	eclipseBar.powtext:SetPoint("CENTER", eclipseBar, "CENTER")
+	
 	return eclipseBar
 end
 
@@ -367,16 +371,16 @@ end
 
 function UF:Construct_RestingIndicator(frame)
 	local resting = frame:CreateTexture(nil, "OVERLAY")
-	resting:Size(22)
-	resting:Point("CENTER", frame.Health, "TOPLEFT", -3, 6)
+	resting:Size(20)
+	resting:Point("TOPRIGHT", frame.Health, "TOPRIGHT", 0, 2)
 	
 	return resting
 end
 
 function UF:Construct_CombatIndicator(frame)
 	local combat = frame:CreateTexture(nil, "OVERLAY")
-	combat:Size(19)
-	combat:Point("CENTER", frame.Health, "CENTER", 0,6)
+	combat:Size(20)
+	combat:Point("TOPRIGHT", frame.Health, "TOPRIGHT", -17,2)
 	combat:SetVertexColor(0.69, 0.31, 0.31)
 	
 	return combat
@@ -384,7 +388,7 @@ end
 
 function UF:Construct_PvPIndicator(frame)
 	local pvp = frame:CreateFontString(nil, 'OVERLAY')
-	pvp:Point("BOTTOM", frame.Health, "BOTTOM", 0, 7)
+	pvp:Point("BOTTOMLEFT", frame.Health, "BOTTOMLEFT", 2, 2)
 	pvp:SetTextColor(0.69, 0.31, 0.31)
 	UF['fontstrings'][pvp] = true
 	
@@ -511,8 +515,8 @@ function UF:Construct_ResurectionIcon(frame)
 	f:SetFrameLevel(20)
 
 	local tex = f:CreateTexture(nil, "OVERLAY")
-	tex:Point('CENTER', frame.Health.value, 'CENTER')
-	tex:Size(30, 25)
+	tex:Point('LEFT', frame.Health.value, 'LEFT')
+	tex:Size(24, 20)
 	tex:SetDrawLayer('OVERLAY', 7)
 	
 	return tex
@@ -590,4 +594,13 @@ function UF:Construct_HealComm(frame)
 			if self.otherBar:GetValue() == 0 then self.otherBar:SetAlpha(0) else self.otherBar:SetAlpha(1) end
 		end
 	}
+end
+
+function UF:Construct_Talents(frame)
+    local Talents = frame:CreateFontString(nil, 'OVERLAY')
+    Talents:SetTextColor(1,1,1,.7)
+    Talents:FontTemplate(nil, 12, 'OUTLINE')
+    Talents:SetPoint('TOPRIGHT', frame.Health, 0, 8)
+
+    return Talents
 end

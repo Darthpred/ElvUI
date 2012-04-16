@@ -495,7 +495,7 @@ function UF:Update_Raid625Frames(frame, db)
 	if not frame:IsElementEnabled('ReadyCheck') then
 		frame:EnableElement('ReadyCheck')
 	end			
-	
+
 	frame:UpdateAllElements()
 end
 

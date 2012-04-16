@@ -4,7 +4,7 @@ local CT = E:NewModule('ClassTimers')
 E.ClassTimers = CT
 
 local auraTypes = { "HELPFUL", "HARMFUL" };
-local BAR_HEIGHT, BAR_SPACING = 22, 1;
+local BAR_HEIGHT, BAR_SPACING = 18, 1;
 
 local function CreateColor(red, green, blue, alpha)
 	return { red / 255, green / 255, blue / 255, alpha };
@@ -522,7 +522,7 @@ function CT:GetAnchor(option, frame)
 	if option == 'PLAYERANCHOR' then
 		anchor, yOffset = self.playerFrame, 4
 	elseif option == 'PLAYERFRAME' then
-		anchor, yOffset = ElvUF_Player, 1
+		anchor, yOffset = ElvUF_Player, 3
 	elseif option == 'PLAYERBUFFS' then
 		anchor, yOffset = ElvUF_Player.Buffs, 1
 	elseif option == 'PLAYERDEBUFFS' then

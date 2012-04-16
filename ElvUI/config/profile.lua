@@ -32,6 +32,7 @@ P['general'] = {
 	['expRepPos'] = 'TOP_SCREEN',
 	
 	--misc
+	['pvpautorelease'] = true,
 	['mapTransparency'] = 1,
 	['minimapSize'] = 176,
 	['raidReminder'] = true,
@@ -81,7 +82,7 @@ P["nameplate"] = {
 
 --Auras
 P['auras'] = {
-	['perRow'] = 12,
+	['perRow'] = 19,
 }
 
 --Chat
@@ -126,20 +127,52 @@ P['skins'] = {
 P['datatexts'] = {
 	['panels'] = {
 		['LeftChatDataPanel'] = {
-			['left'] = 'Armor',
-			['middle'] = 'Durability',
-			['right'] = 'Avoidance',
+			['left'] = 'Призыв к оружию',
+			['middle'] = 'Прочность',
+			['right'] = 'Друзья',
 		},
 		['RightChatDataPanel'] = {
-			['left'] = 'System',
-			['middle'] = 'Time',	
-			['right'] = 'Gold',
+			['left'] = 'Меткость',
+			['middle'] = 'Искусность',	
+			['right'] = 'Таланты',
 		},
-		['LeftMiniPanel'] = 'Guild',
-		['RightMiniPanel'] = 'Friends',
+		['Bottom_Right'] = {
+		['left'] = 'Сила заклинаний',
+		['middle'] = 'Скорость',
+		['right'] = 'Крит',
+		},
+		['Bottom_Left'] = {
+		['left'] = 'Сумки',
+		['middle'] = 'Золото',
+		['right'] = 'Броня',
+		},	
+		['Top_Left'] = {
+		['left'] = 'Swatter',
+		['middle'] = 'Skada',
+		['right'] = 'MrtWoo',
+		},	
+		['Top_Right'] = {
+		['left'] = '',
+		['middle'] = '',
+		['right'] = '',
+		},	
+		['Top_Center_Left'] = {
+		['left'] = 'Altoholic',
+		['middle'] = 'TellMeWhen',
+		['right'] = 'AtlasLoot',
+		},
+		['Top_Center_Right'] = {
+		['left'] = 'Notes',
+		['middle'] = 'DBM-LDB',
+		['right'] = 'WIM',
+		},
+		['LeftMiniPanel'] = 'Время',
+		['RightMiniPanel'] = 'Гильдия',
+		['Bottom_Panel'] = 'Система',
+		['Top_Center'] = 'Сборка',
 	},
 	['localtime'] = true,
-	['time24'] = false,
+	['time24'] = true,
 }
 
 --Tooltip
@@ -821,7 +854,7 @@ P['unitframe'] = {
 				['anchorPoint'] = 'RIGHT',					
 				['fontsize'] = 10,
 				['showPlayerOnly'] = false,
-				['useFilter'] = 'DebuffBlacklist',	
+				['useFilter'] = '',	
 				['durationLimit'] = 0,
 			},	
 			['buffIndicator'] = {

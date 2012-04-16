@@ -10,9 +10,9 @@ local function OnEvent(self, event, unit)
 	
 	local baseMR, castingMR = GetManaRegen()
 	if InCombatLockdown() then
-		self.text:SetFormattedText(displayNumberString, MANA_REGEN, castingMR*5)
+		self.text:SetFormattedText(displayNumberString, 'MP5', castingMR*5)
 	else
-		self.text:SetFormattedText(displayNumberString, MANA_REGEN, baseMR*5)
+		self.text:SetFormattedText(displayNumberString, 'MP5', baseMR*5)
 	end
 end
 
@@ -36,4 +36,4 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	onEnterFunc - function to fire OnEnter
 	onLeaveFunc - function to fire OnLeave, if not provided one will be set for you that hides the tooltip.
 ]]
-DT:RegisterDatatext('Mana Regen', {"UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE"}, OnEvent)
+DT:RegisterDatatext("Манарег", {"UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE"}, OnEvent)

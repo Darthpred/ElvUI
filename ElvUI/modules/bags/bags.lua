@@ -256,7 +256,7 @@ function B:Layout(isBank)
 	if not isBank then
 		bs = BAGS_BACKPACK
 		if E.db.bags.bagCols == 0 then
-			cols = floor((E.db.general.panelWidth - 10)/370 * 10)
+			cols = floor((E.db.general.panelWidth)/370 * 10)
 			bagWidth = E.db.general.panelWidth - 10
 		else
 			cols = E.db.bags.bagCols
@@ -264,11 +264,11 @@ function B:Layout(isBank)
 		end
 
 		f = bagFrame
-		bSize = 30
+		bSize = 22
 	else
 		bs = BAGS_BANK
 		if E.db.bags.bankCols == 0 then
-			cols = floor((E.db.general.panelWidth - 10)/370 * 10)
+			cols = floor((E.db.general.panelWidth)/370 * 10)
 			bagWidth = E.db.general.panelWidth - 10
 		else
 			cols = E.db.bags.bankCols
@@ -276,7 +276,7 @@ function B:Layout(isBank)
 		end
 
 		f = bankFrame
-		bSize = 30
+		bSize = 22
 	end
 
 	if not f then return end
@@ -333,10 +333,10 @@ function B:Layout(isBank)
 		rows = rows + 1
 	end
 
-	f:Width(bagWidth)
-	f:Height(rows * 31 + (rows - 1) * 4 + offset + 24)
+	f:Width((E.db.general.panelWidth))
+	f:Height(rows * 23 + (rows - 1) * 4 + offset + 24)
 
-	f.HolderFrame:SetWidth(33.5 * cols)
+	f.HolderFrame:SetWidth(25.5 * cols)
 	f.HolderFrame:SetHeight(f:GetHeight() - 8)
 	f.HolderFrame:SetPoint("BOTTOM", f, "BOTTOM")
 	f.HolderFrame:FixDimensions()
@@ -368,9 +368,9 @@ function B:Layout(isBank)
 					end
 				end
 
-				xOff = (x * 31) + (x * 2.5)
+				xOff = (x * 23) + (x * 2.5)
 
-				yOff = offset + 12 + (y * 31) + ((y - 1) * 4)
+				yOff = offset + 12 + (y * 23) + ((y - 1) * 4)
 				yOff = yOff * -1
 
 				b.frame:ClearAllPoints()
@@ -387,9 +387,9 @@ function B:Layout(isBank)
 					elseif specialType == 0x0010 then -- Inscription
 						b.frame:SetBackdropBorderColor(74/255, 77/255,  224/255)
 					elseif specialType == 0x0020 then -- Herbs
-						b.frame:SetBackdropBorderColor(18/255, 181/255,  32/255)
+						b.frame:SetBackdropBorderColor(171/255, 214/255, 116/255)
 					elseif specialType == 0x0040 then -- Enchanting
-						b.frame:SetBackdropBorderColor(160/255, 3/255,  168/255)
+						b.frame:SetBackdropBorderColor(104/255, 205/255, 255/255)
 					elseif specialType == 0x0080 then -- Engineering
 						b.frame:SetBackdropBorderColor(232/255, 118/255,  46/255)
 					elseif specialType == 0x0200 then -- Gems
@@ -534,9 +534,13 @@ function B:CreateBagFrame(type)
 	f:SetFrameStrata("DIALOG")
 
 	if type == 'Bags' then
-		self.bagsFrame = f
+		f:Point('BOTTOMRIGHT', RightChatToggleButton, 'TOPRIGHT', 2, E.db.general.panelHeight + 2)
 	else
-		self.bankFrame = f
+		f:Point('BOTTOMLEFT', LeftChatToggleButton, 'TOPLEFT', -2, E.db.general.panelHeight + 2)
+		
+	--[[	self.bagsFrame = f
+	else
+		self.bankFrame = f]]
 	end
 	
 	self:PositionBagFrames()
@@ -1427,7 +1431,7 @@ hooksecurefunc("updateContainerFrameAnchors", function()
 		frame:SetScale(1);
 		if ( index == 1 ) then
 			-- First bag
-			frame:SetPoint("BOTTOMRIGHT", RightChatToggleButton, "TOPRIGHT", 2, 2);
+			frame:SetPoint("BOTTOMRIGHT", RightChatPanel, "TOPRIGHT", 2, 2);
 			bagsPerColumn = bagsPerColumn + 1
 		elseif ( freeScreenHeight < frame:GetHeight() ) then
 			-- Start a new column

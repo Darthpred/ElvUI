@@ -9,6 +9,7 @@ E.Layout = LO;
 function LO:Initialize()
 	self:CreateChatPanels()
 	self:CreateMinimapPanels()
+	self:CreateDataPanels() -- Инициализация добавления панелей под инфотексты
 end
 
 
@@ -95,12 +96,13 @@ function LO:ToggleChatPanels()
 		LeftChatTab:Show()
 		RightChatPanel.backdrop:Show()
 		RightChatTab:Show()		
-		LeftChatDataPanel:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 5 + SIDE_BUTTON_WIDTH, 5)
-		LeftChatDataPanel:Point('TOPRIGHT', LeftChatPanel, 'BOTTOMRIGHT', -5, (5 + PANEL_HEIGHT))		
-		RightChatDataPanel:Point('BOTTOMLEFT', RightChatPanel, 'BOTTOMLEFT', 5, 5)
-		RightChatDataPanel:Point('TOPRIGHT', RightChatPanel, 'BOTTOMRIGHT', -(5 + SIDE_BUTTON_WIDTH), 5 + PANEL_HEIGHT)		
-		LeftChatToggleButton:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 5, 5)
-		RightChatToggleButton:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', -5, 5)
+
+		LeftChatDataPanel:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', SIDE_BUTTON_WIDTH, -21) --lower line of datapanel
+		LeftChatDataPanel:Point('TOPRIGHT', LeftChatPanel, 'BOTTOMRIGHT', -70, -1) --upper line of datapanel		
+		RightChatDataPanel:Point('BOTTOMLEFT', RightChatPanel, 'BOTTOMLEFT', 70, -21) --lower-left corner of right datapanel
+		RightChatDataPanel:Point('TOPRIGHT', RightChatPanel, 'BOTTOMRIGHT', -SIDE_BUTTON_WIDTH, -1)	--upper-right corner of right datapanel	
+		LeftChatToggleButton:Point('BOTTOMLEFT', LeftChatPanel, 'BOTTOMLEFT', 0, -21)
+		RightChatToggleButton:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', 0, -21)
 	elseif E.db.general.panelBackdrop == 'HIDEBOTH' then
 		LeftChatPanel.backdrop:Hide()
 		LeftChatTab:Hide()
@@ -141,8 +143,8 @@ function LO:CreateChatPanels()
 	--Left Chat
 	local lchat = CreateFrame('Frame', 'LeftChatPanel', E.UIParent)
 	lchat:SetFrameStrata('BACKGROUND')
-	lchat:Size(E.db.general.panelWidth, E.db.general.panelHeight)		
-	lchat:Point('BOTTOMLEFT', E.UIParent, 4, 4)
+	lchat:Size(E.db.general.panelWidth, E.db.general.panelHeight)
+	lchat:Point('BOTTOMLEFT', E.UIParent, 0, 21)
 	lchat:CreateBackdrop('Transparent')
 	lchat.backdrop:SetAllPoints()
 	
@@ -155,12 +157,12 @@ function LO:CreateChatPanels()
 	
 	--Left Chat Tab
 	local lchattab = CreateFrame('Frame', 'LeftChatTab', LeftChatPanel)
-	lchattab:Point('TOPLEFT', lchat, 'TOPLEFT', 5, -5)
-	lchattab:Point('BOTTOMRIGHT', lchat, 'TOPRIGHT', -5, -(5 + PANEL_HEIGHT))
+	lchattab:Point('TOPLEFT', lchat, 'TOPLEFT', 2, -2)
+	lchattab:Point('BOTTOMRIGHT', lchat, 'TOPRIGHT', -2, -PANEL_HEIGHT)
 	lchattab:SetTemplate('Default', true)
 	
 	--Left Chat Data Panel
-	local lchatdp = CreateFrame('Frame', 'LeftChatDataPanel', LeftChatPanel)
+	local lchatdp = CreateFrame('Frame', 'LeftChatDataPanel', E.UIParent)
 	lchatdp:Point('BOTTOMLEFT', lchat, 'BOTTOMLEFT', 5 + SIDE_BUTTON_WIDTH, 5)
 	lchatdp:Point('TOPRIGHT', lchat, 'BOTTOMRIGHT', -5, (5 + PANEL_HEIGHT))
 	lchatdp:SetTemplate('Default', true)
@@ -187,7 +189,7 @@ function LO:CreateChatPanels()
 	local rchat = CreateFrame('Frame', 'RightChatPanel', E.UIParent)
 	rchat:SetFrameStrata('BACKGROUND')
 	rchat:Size(E.db.general.panelWidth, E.db.general.panelHeight)
-	rchat:Point('BOTTOMRIGHT', E.UIParent, -4, 4)
+	rchat:Point('BOTTOMRIGHT', E.UIParent, 0, 21)
 	rchat:CreateBackdrop('Transparent')
 	rchat.backdrop:SetAllPoints()
 	
@@ -200,8 +202,8 @@ function LO:CreateChatPanels()
 	
 	--Right Chat Tab
 	local rchattab = CreateFrame('Frame', 'RightChatTab', RightChatPanel)
-	rchattab:Point('TOPRIGHT', rchat, 'TOPRIGHT', -5, -5)
-	rchattab:Point('BOTTOMLEFT', rchat, 'TOPLEFT', 5, -(5 + PANEL_HEIGHT))
+	rchattab:Point('TOPRIGHT', rchat, 'TOPRIGHT', -2, -2)
+	rchattab:Point('BOTTOMLEFT', rchat, 'TOPLEFT', 2, -PANEL_HEIGHT)
 	rchattab:SetTemplate('Default', true)
 	
 	--Right Chat Data Panel
@@ -268,4 +270,114 @@ function LO:CreateMinimapPanels()
 	configtoggle:SetScript('OnClick', function() E:ToggleConfig() end)
 end
 
+-- Новые панели инфотекстов
+function LO:CreateDataPanels()
+	--Правая нижняя панель
+	local bottom_bar = CreateFrame('Frame', "Bottom_Right", E.UIParent)
+	bottom_bar:SetTemplate('Default', true)
+	bottom_bar:SetFrameStrata('LOW')
+	bottom_bar:Point("BOTTOM", E.UIParent, "BOTTOM", 305, 0); 
+	bottom_bar:SetScript('OnShow', function(self) 
+		self:Size(420, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Bottom_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
+	bottom_bar:Hide()
+	
+	--Левая нижняя панель
+	local top_bar = CreateFrame('Frame', 'Bottom_Left', E.UIParent)
+	top_bar:SetTemplate('Default', true)
+	top_bar:SetFrameStrata('LOW')
+	top_bar:Point("BOTTOM", E.UIParent, "BOTTOM", -305, 0); 
+	top_bar:SetScript('OnShow', function(self) 
+		self:Size(420, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Bottom_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_bar:Hide()
+	
+	--Центральная нижняя панель
+	local map = CreateFrame('Frame', 'Bottom_Panel', E.UIParent)
+	map:SetTemplate('Default', true)
+	map:SetFrameStrata('LOW')
+	map:Point("BOTTOM", E.UIParent, "BOTTOM", 0, 0); 
+	map:SetScript('OnShow', function(self) 
+		self:Size(188, 20)
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Bottom_Panel, 1, 'ANCHOR_BOTTOM', 0, -4)
+	map:Hide()
+	
+	--Верхняя левая крайняя панель
+	local top_left_bar = CreateFrame('Frame', "Top_Left", E.UIParent)
+	top_left_bar:SetTemplate('Default', true)
+	top_left_bar:SetFrameStrata('LOW')
+	top_left_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", E.UIParent, "TOPLEFT", 0, 0); 
+		self:Size(E.UIParent:GetWidth()/5, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_left_bar:Hide()
+	
+	--Верхняя правая крайняя панель
+	local top_right_bar = CreateFrame('Frame', "Top_Right", E.UIParent)
+	top_right_bar:SetTemplate('Default', true)
+	top_right_bar:SetFrameStrata('LOW')
+	top_right_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", 0, 0); 
+		self:Size(E.UIParent:GetWidth()/5, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_right_bar:Hide()
+	
+	--Верхняя правая панель
+	local top_center_right_bar = CreateFrame('Frame', "Top_Center_Right", E.UIParent)
+	top_center_right_bar:SetTemplate('Default', true)
+	top_center_right_bar:SetFrameStrata('LOW')
+	top_center_right_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPRIGHT", Top_Right, "TOPLEFT", -1, 0); 
+		self:Size(E.UIParent:GetWidth()/5, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Right, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_right_bar:Hide()
+	
+	--Верхняя левая панель
+	local top_center_left_bar = CreateFrame('Frame', "Top_Center_Left", E.UIParent)
+	top_center_left_bar:SetTemplate('Default', true)
+	top_center_left_bar:SetFrameStrata('LOW')
+	top_center_left_bar:SetScript('OnShow', function(self) 
+		self:Point("TOPLEFT", Top_Left, "TOPRIGHT", 1, 0); 
+		self:Size(E.UIParent:GetWidth()/5, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center_Left, 3, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_left_bar:Hide()
+	
+	--Верхняя центральная панель
+	local top_center_bar = CreateFrame('Frame', "Top_Center", E.UIParent)
+	top_center_bar:SetTemplate('Default', true)
+	top_center_bar:SetFrameStrata('LOW')
+	top_center_bar:SetScript('OnShow', function(self) 
+		self:Point("TOP", E.UIParent, "TOP", 0, 0); 
+		self:Size((E.UIParent:GetWidth()/5) - 4, 20);
+	end)
+	E:GetModule('DataTexts'):RegisterPanel(Top_Center, 1, 'ANCHOR_BOTTOM', 0, -4)
+	top_center_bar:Hide()
+end
+
+--Отображать панели
+function ExtraDataBarSetup()
+Bottom_Left:Show()
+Bottom_Right:Show()
+Bottom_Panel:Show()
+Top_Left:Show()
+Top_Right:Show()
+Top_Center_Right:Show()
+Top_Center_Left:Show()
+Top_Center:Show()
+end
+
+--Обновлять панели на каждый экран загрузки
+function LO:PLAYER_ENTERING_WORLD(...)
+ExtraDataBarSetup()
+self:UnregisterEvent("PLAYER_ENTERING_WORLD");
+end
+--Конец добавления панелей
+LO:RegisterEvent('PLAYER_ENTERING_WORLD')
 E:RegisterModule(LO:GetName())
