@@ -264,8 +264,8 @@ function CH:PositionChat(override)
 		if point == "BOTTOMRIGHT" and chat:IsShown() and not (id > NUM_CHAT_WINDOWS) and id == self.RightChatWindowID then
 			if id ~= 2 then
 				chat:ClearAllPoints()
-				chat:Point("BOTTOMLEFT", RightChatDataPanel, "TOPLEFT", 1, 3)
-				chat:SetSize(E.db.general.panelWidth - 11, (E.db.general.panelHeight - 60))
+				chat:Point("BOTTOMLEFT", RightChatDataPanel, "TOPLEFT", -70, 3)
+				chat:SetSize(E.db.general.panelWidth - 6, (E.db.general.panelHeight - 27))
 			else
 				chat:ClearAllPoints()
 				chat:Point("BOTTOMLEFT", RightChatDataPanel, "TOPLEFT", 1, 3)
