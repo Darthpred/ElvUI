@@ -68,12 +68,78 @@ local function OnEnter(self)
 	local totalGold = 0				
 	GameTooltip:AddLine(L["Character: "])			
 
-	for k,_ in pairs(ElvData['gold'][E.myrealm]) do
-		if ElvData['gold'][E.myrealm][k] then 
-			GameTooltip:AddDoubleLine(k, FormatTooltipMoney(ElvData['gold'][E.myrealm][k]), 1, 1, 1, 1, 1, 1)
-			totalGold=totalGold+ElvData['gold'][E.myrealm][k]
-		end
-	end
+	--Locales to make my personal sorting to the gold list
+	local tempTable = { }
+    local Darth
+	local Aleyah
+	local Wazzuli
+	local Siaranna
+	local Jaton
+	local Kilandra
+	local Fixter
+	local Narjo
+	local Verzuk
+    local DarthGold
+	local AleyahGold
+	local WazzuliGold
+	local SiarannaGold
+	local JatonGold
+	local KilandraGold
+	local FixterGold
+	local NarjoGold
+	local VerzukGold
+
+    for k,v in pairs(ElvData['gold'][E.myrealm]) do
+        local charName = k
+        local goldCount = ElvData['gold'][E.myrealm][k]
+        if charName == "Дартпредатор" then
+            Darth = charName
+            DarthGold = goldCount
+        elseif charName == "Алея" then
+			Aleyah = charName
+            AleyahGold = goldCount
+		elseif charName == "Ваззули" then
+			Wazzuli = charName
+            WazzuliGold = goldCount
+		elseif charName == "Сиаранна" then
+			Siaranna = charName
+            SiarannaGold = goldCount
+		elseif charName == "Джатон" then
+			Jaton = charName
+            JatonGold = goldCount
+		elseif charName == "Киландра" then
+			Kilandra = charName
+            KilandraGold = goldCount
+		elseif charName == "Фикстер" then
+			Fixter = charName
+            FixterGold = goldCount
+		elseif charName == "Нарджо" then
+			Narjo = charName
+            NarjoGold = goldCount
+		elseif charName == "Верзук" then
+			Verzuk = charName
+            VerzukGold = goldCount
+		else
+            table.insert(tempTable, 1, {[charName] = goldCount})
+        end
+    end
+
+    table.insert(tempTable, 1, {[Darth] = DarthGold})
+	table.insert(tempTable, 2, {[Aleyah] = AleyahGold})
+	table.insert(tempTable, 3, {[Wazzuli] = WazzuliGold})
+	table.insert(tempTable, 4, {[Siaranna] = SiarannaGold})
+	table.insert(tempTable, 5, {[Jaton] = JatonGold})
+	table.insert(tempTable, 6, {[Kilandra] = KilandraGold})
+	table.insert(tempTable, 7, {[Fixter] = FixterGold})
+	table.insert(tempTable, 8, {[Narjo] = NarjoGold})
+	table.insert(tempTable, 9, {[Verzuk] = VerzukGold})
+
+   for i=1, table.getn(tempTable) do
+        for k,v in pairs(tempTable[i]) do
+            GameTooltip:AddDoubleLine(k, FormatTooltipMoney(v), 1, 1, 1, 1, 1, 1)
+            totalGold=totalGold+v;
+        end
+    end
 	
 	GameTooltip:AddLine' '
 	GameTooltip:AddLine(L["Server: "])
