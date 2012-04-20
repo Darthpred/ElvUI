@@ -4,6 +4,7 @@
 	<Script file='acp.lua'/>
 	<Script file='bigwigs.lua'/>
 	<Script file='dbm.lua'/>
+	<Script file='dbmopt.lua'/>
 	<Script file='dxe.lua'/>
 	<Script file='ace3.lua'/>
 	<Script file='omen.lua'/>
