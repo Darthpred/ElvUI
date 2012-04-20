@@ -421,7 +421,7 @@ function UF:Construct_NameText(frame)
 	if frame.unit == 'player' or frame.unit == 'target' then
 		frame:Tag(name, '[Elv:getnamecolor][Elv:namelong] [Elv:diffcolor][level] [shortclassification]')
 	else
-		frame:Tag(name, '[Elv:getnamecolor][Elv:namemedium]')
+		frame:Tag(name, '[Elv:getnamecolor][Elv:nameshort]')
 	end
 	name:SetPoint('CENTER', frame.Health)
 	
