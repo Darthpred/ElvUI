@@ -1,7 +1,7 @@
 ﻿local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "ruRU")
 if not L then return; end
-
+--Additional lines from my own edits
 L["Bottom_Right"] = "Нижняя правая панель"
 L["Bottom_Left"] = "Нижняя левая панель"
 L["Bottom_Panel"] = "Нижняя центральная панель"
@@ -13,7 +13,7 @@ L["Top_Right"] = "Верхняя правая панель"
 
 L["PvP Autorelease"] = "Автовыход из тела"
 L['Automatically release body when killed inside a battleground.'] = "Автоматически выходить из тела на полях боя."
-
+--Regular ElvUI locale strings
 L["24-Hour Time"] = "24х часовой формат"
 L["Accept Invites"] = "Принимать приглашения"
 L["Achievement Frame"] = "Достижения"
@@ -806,3 +806,5 @@ L["Your items have been repaired using guild bank funds for: "] = "Ваши пр
 L["Your version of ElvUI is out of date. You can download the latest version from www.tukui.org"] = "Ваша версия ElvUI устарела. Вы можете скачать последнюю версию на www.tukui.org"
 L['|cFFE30000Lua error recieved. You can view the error message when you exit combat.'] = "|cFFE30000Обнаружена ошибка lua. Вы получите отчет о ней после завершения боя."
 L["%s: %s tried to call the protected function '%s'."] = "%s: %s попытался вызвать защищенную функцию '%s'."
+L['Class Names'] = "Имена по классу"
+L['Color the name text by class or reaction.'] = "Окрашивает имена по цвету класса или отношению."
