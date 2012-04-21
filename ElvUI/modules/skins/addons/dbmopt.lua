@@ -13,6 +13,8 @@ local function LoadSkin()
 	S:HandleTab(DBM_GUI_OptionsFrameTab1)
 	S:HandleTab(DBM_GUI_OptionsFrameTab2)
 	S:HandleButton(DBM_GUI_OptionsFrameOkay, true)
+	
+	S:HandleScrollBar(DBM_GUI_OptionsFramePanelContainerFOVScrollBar)
 end
 
 S:RegisterSkin('DBM-GUI', LoadSkin)
