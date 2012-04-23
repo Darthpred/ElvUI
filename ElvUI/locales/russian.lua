@@ -808,3 +808,5 @@ L['|cFFE30000Lua error recieved. You can view the error message when you exit co
 L["%s: %s tried to call the protected function '%s'."] = "%s: %s попытался вызвать защищенную функцию '%s'."
 L['Class Names'] = "Имена по классу"
 L['Color the name text by class or reaction.'] = "Окрашивает имена по цвету класса или отношению."
+L["Log Taints"] = "Отслеживать недочеты"
+L["Send ADDON_ACTION_BLOCKED errors to the Lua Error frame. These errors are less important in most cases and will not effect your game performance. Also a lot of these errors cannot be fixed. Please only report these errors if you notice a Defect in gameplay."] = "Отображать ошибки типа ADDON_ACTION_BLOCKED в фрейме ошибок lua. Эти ошибки в большинстве случаев не сильно важны и не влияют на производительность. Также многие из этих ошибок не могут быть исправлены. Пожалуйста, сообщайте об этих ошибках только если вы заметите дефект в игре."
