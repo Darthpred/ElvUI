@@ -88,51 +88,51 @@ local function OnEnter(self)
 	local FixterGold
 	local NarjoGold
 	local VerzukGold
-
+	
+	--Sorting conditions
     for k,v in pairs(ElvData['gold'][E.myrealm]) do
         local charName = k
         local goldCount = ElvData['gold'][E.myrealm][k]
         if charName == "Дартпредатор" then
             Darth = charName
             DarthGold = goldCount
+			table.insert(tempTable, 1, {[Darth] = DarthGold})
         elseif charName == "Алея" then
 			Aleyah = charName
             AleyahGold = goldCount
+			table.insert(tempTable, 2, {[Aleyah] = AleyahGold})
 		elseif charName == "Ваззули" then
 			Wazzuli = charName
             WazzuliGold = goldCount
+			table.insert(tempTable, 3, {[Wazzuli] = WazzuliGold})
 		elseif charName == "Сиаранна" then
 			Siaranna = charName
             SiarannaGold = goldCount
+			table.insert(tempTable, 4, {[Siaranna] = SiarannaGold})
 		elseif charName == "Джатон" then
 			Jaton = charName
             JatonGold = goldCount
+			table.insert(tempTable, 5, {[Jaton] = JatonGold})
 		elseif charName == "Киландра" then
 			Kilandra = charName
             KilandraGold = goldCount
+			table.insert(tempTable, 6, {[Kilandra] = KilandraGold})
 		elseif charName == "Фикстер" then
 			Fixter = charName
             FixterGold = goldCount
+			table.insert(tempTable, 7, {[Fixter] = FixterGold})
 		elseif charName == "Нарджо" then
 			Narjo = charName
             NarjoGold = goldCount
+			table.insert(tempTable, 8, {[Narjo] = NarjoGold})
 		elseif charName == "Верзук" then
 			Verzuk = charName
             VerzukGold = goldCount
+			table.insert(tempTable, 9, {[Verzuk] = VerzukGold})
 		else
             table.insert(tempTable, 1, {[charName] = goldCount})
         end
     end
-
-    table.insert(tempTable, 1, {[Darth] = DarthGold})
-	table.insert(tempTable, 2, {[Aleyah] = AleyahGold})
-	table.insert(tempTable, 3, {[Wazzuli] = WazzuliGold})
-	table.insert(tempTable, 4, {[Siaranna] = SiarannaGold})
-	table.insert(tempTable, 5, {[Jaton] = JatonGold})
-	table.insert(tempTable, 6, {[Kilandra] = KilandraGold})
-	table.insert(tempTable, 7, {[Fixter] = FixterGold})
-	table.insert(tempTable, 8, {[Narjo] = NarjoGold})
-	table.insert(tempTable, 9, {[Verzuk] = VerzukGold})
 
    for i=1, table.getn(tempTable) do
         for k,v in pairs(tempTable[i]) do
