@@ -68,78 +68,12 @@ local function OnEnter(self)
 	local totalGold = 0				
 	GameTooltip:AddLine(L["Character: "])			
 
-	--Locales to make my personal sorting to the gold list
-	local tempTable = { }
-    local Darth
-	local Aleyah
-	local Wazzuli
-	local Siaranna
-	local Jaton
-	local Kilandra
-	local Fixter
-	local Narjo
-	local Verzuk
-    local DarthGold
-	local AleyahGold
-	local WazzuliGold
-	local SiarannaGold
-	local JatonGold
-	local KilandraGold
-	local FixterGold
-	local NarjoGold
-	local VerzukGold
-	
-	--Sorting conditions
-    for k,v in pairs(ElvData['gold'][E.myrealm]) do
-        local charName = k
-        local goldCount = ElvData['gold'][E.myrealm][k]
-        if charName == "Дартпредатор" then
-            Darth = charName
-            DarthGold = goldCount
-			table.insert(tempTable, 1, {[Darth] = DarthGold})
-        elseif charName == "Алея" then
-			Aleyah = charName
-            AleyahGold = goldCount
-			table.insert(tempTable, 2, {[Aleyah] = AleyahGold})
-		elseif charName == "Ваззули" then
-			Wazzuli = charName
-            WazzuliGold = goldCount
-			table.insert(tempTable, 3, {[Wazzuli] = WazzuliGold})
-		elseif charName == "Сиаранна" then
-			Siaranna = charName
-            SiarannaGold = goldCount
-			table.insert(tempTable, 4, {[Siaranna] = SiarannaGold})
-		elseif charName == "Джатон" then
-			Jaton = charName
-            JatonGold = goldCount
-			table.insert(tempTable, 5, {[Jaton] = JatonGold})
-		elseif charName == "Киландра" then
-			Kilandra = charName
-            KilandraGold = goldCount
-			table.insert(tempTable, 6, {[Kilandra] = KilandraGold})
-		elseif charName == "Фикстер" then
-			Fixter = charName
-            FixterGold = goldCount
-			table.insert(tempTable, 7, {[Fixter] = FixterGold})
-		elseif charName == "Нарджо" then
-			Narjo = charName
-            NarjoGold = goldCount
-			table.insert(tempTable, 8, {[Narjo] = NarjoGold})
-		elseif charName == "Верзук" then
-			Verzuk = charName
-            VerzukGold = goldCount
-			table.insert(tempTable, 9, {[Verzuk] = VerzukGold})
-		else
-            table.insert(tempTable, 1, {[charName] = goldCount})
-        end
-    end
-
-   for i=1, table.getn(tempTable) do
-        for k,v in pairs(tempTable[i]) do
-            GameTooltip:AddDoubleLine(k, FormatTooltipMoney(v), 1, 1, 1, 1, 1, 1)
-            totalGold=totalGold+v;
-        end
-    end
+	for k,_ in pairs(ElvData['gold'][E.myrealm]) do
+		if ElvData['gold'][E.myrealm][k] then 
+			GameTooltip:AddDoubleLine(k, FormatTooltipMoney(ElvData['gold'][E.myrealm][k]), 1, 1, 1, 1, 1, 1)
+			totalGold=totalGold+ElvData['gold'][E.myrealm][k]
+		end
+	end
 	
 	GameTooltip:AddLine' '
 	GameTooltip:AddLine(L["Server: "])
